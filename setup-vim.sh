@@ -21,8 +21,8 @@ fnExec()
 
 fnGitClone()
 {
-	$GIT_URL=$1
-	$DIR_PLUGIN=$2
+	GIT_URL=$1
+	DIR_PLUGIN=$2
 	if [ -d ${DIR_PLUGIN} ] ; then
 		fnExec cd ${DIR_PLUGIN}
 		fnExec git pull
@@ -84,8 +84,6 @@ echo "**** Step ${STEP}/${STEPS} Installing pathogen..."
 echo "********************************************************************************"
 echo ""
 
-fnExec rm -fr ${TMP}/vim-pathogen # Delete earlier pathogen VIM plugin if it's present
-
 fnGitClone https://github.com/tpope/vim-pathogen.git ${TMP}/vim-pathogen # Fetch pathogen VIM package manager
 
 fnExec cp -f ${TMP}/vim-pathogen/autoload/pathogen.vim ${DIR_AUTOLOAD}/ # Copy pathogen for it to auto-load
@@ -97,12 +95,11 @@ echo "**** Step ${STEP}/${STEPS} Installing plugins..."
 echo "********************************************************************************"
 echo ""
 
-fnExec cd ${DIR_BUNDLE}
-fnGitClone https://github.com/w0rp/ale.git ./ale # Asynchronous Lint Engine
-fnGitClone https://github.com/scrooloose/nerdtree.git ./nerdtree # quick navigation
-fnGitClone https://github.com/majutsushi/tagbar.git ./tagbar # source code outline
-fnGitClone https://github.com/tpope/vim-fugitive.git ./fugitive # Git wrapper
-fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ./fugitive-gitlab # Gitlab wrapper
+fnGitClone https://github.com/w0rp/ale.git ${DIR_BUNDLE}/ale # Asynchronous Lint Engine
+fnGitClone https://github.com/scrooloose/nerdtree.git ${DIR_BUNDLE}/nerdtree # quick navigation
+fnGitClone https://github.com/majutsushi/tagbar.git ${DIR_BUNDLE}/tagbar # source code outline
+fnGitClone https://github.com/tpope/vim-fugitive.git ${DIR_BUNDLE}/vim-fugitive # Git wrapper
+fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fugitive-gitlab.vim # Gitlab wrapper
 
 STEP=`expr ${STEP} + 1`
 echo ""
@@ -110,6 +107,8 @@ echo "**************************************************************************
 echo "**** Step ${STEP}/${STEPS} Configure VIM with usual dev settings..."
 echo "********************************************************************************"
 echo ""
+
+fnExec cd ~ # Switch back to user home folder
 
 if [ "$UNAME_OS" == "Msys" ] ; then
 	fnExec cmd <<< "mklink _vimrc ${DIR_UM_GIT}/dev-tools/dev.vim" # Create symbolic link to VIM settings
