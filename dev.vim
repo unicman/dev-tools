@@ -14,12 +14,14 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Good font
-set guifont=Courier\ New
+if has('gui_running')
+	" Good font
+	set guifont=Courier\ New
 
-" Sufficient size window
-set lines=1000
-set columns=150
+	" Sufficient size window
+	set lines=1000
+	set columns=150
+endif
 
 " Avoid annoying ~ backup files
 set nobackup
