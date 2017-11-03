@@ -34,10 +34,10 @@ fnGitClone()
 ########################################
 # Setup logic
 ########################################
-DIR_UM_GIT=~/um-git-2
+DIR_UM_GIT=~/um-git
 UNAME_OS=$(uname -o)
 UNAME=$(uname)
-STEPS=5
+STEPS=6
 STEP=0
 
 if [ "${TMP}" == "" ] ; then
@@ -104,6 +104,27 @@ fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fu
 STEP=`expr ${STEP} + 1`
 echo ""
 echo "********************************************************************************"
+echo "**** Step ${STEP}/${STEPS} Install Universal ctags..."
+echo "********************************************************************************"
+echo ""
+
+if [ "$UNAME_OS" == "Msys" ] ; then
+    echo "Need to write code for windows installation of universal ctags."
+    exit 1
+else
+    fnGitClone https://github.com/universal-ctags/ctags.git ${DIR_UM_GIT}/universal-ctags # Fetch latest source
+    fnExec cd ${DIR_UM_GIT}/universal-ctags
+    fnExec ./autogen.sh
+    fnExec ./configure --prefix=${DIR_UM_GIT}/universal-ctags
+    fnExec make
+    fnExec make install
+
+    fnExec ctags --version
+fi
+
+STEP=`expr ${STEP} + 1`
+echo ""
+echo "********************************************************************************"
 echo "**** Step ${STEP}/${STEPS} Configure VIM with usual dev settings..."
 echo "********************************************************************************"
 echo ""
@@ -113,6 +134,6 @@ fnExec cd ~ # Switch back to user home folder
 if [ "$UNAME_OS" == "Msys" ] ; then
 	fnExec cmd <<< "mklink _vimrc ${DIR_UM_GIT}/dev-tools/dev.vim" # Create symbolic link to VIM settings
 else
-	fnExec ln -s ${DIR_UM_GIT}/dev-tools/dev.vim .vimrc # Create symbolic link to VIM settings
+	fnExec ln -sf ${DIR_UM_GIT}/dev-tools/dev.vim .vimrc # Create symbolic link to VIM settings
 fi
 
