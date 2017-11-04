@@ -23,6 +23,9 @@ if has('gui_running')
 	set columns=150
 endif
 
+" Allow mouse controls
+set mouse=a
+
 " Avoid annoying ~ backup files
 set nobackup
 
