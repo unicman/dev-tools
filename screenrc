@@ -1,0 +1,31 @@
+# go to home dir
+#chdir
+
+# Automatically detach on hangup. 
+autodetach on
+
+# Change default scrollback value for new windows
+defscrollback 10000
+
+# Allow to use mouse to work with screen tabs
+# source: https://superuser.com/questions/629004/gnu-screen-change-focus-in-split-windows-with-mouse
+# mousetrack on
+
+term screen-256color
+
+# start with visual bell as default
+vbell on
+vbell_msg "bell on %t (%n)"
+
+# look and feel
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+
+activity "Activity in %t(%n)"
+
+# start with screen 1 number instead of 0
+# source: https://wiki.archlinux.org/index.php/GNU_Screen#Start_at_window_1
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10                                                            
+screen 1
