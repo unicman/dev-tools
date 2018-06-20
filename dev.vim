@@ -23,6 +23,9 @@ if has('gui_running')
 	" Sufficient size window
 	set lines=1000
 	set columns=150
+
+	" Spelling check
+	set spell
 endif
 
 " Allow mouse controls
@@ -39,9 +42,6 @@ set backspace=indent,start
 
 " Cool syntax highlighting
 syntax on
-
-" Spelling check
-set spell
 
 " Always show current position
 set ruler
