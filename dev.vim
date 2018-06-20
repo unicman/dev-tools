@@ -76,8 +76,6 @@ set diffopt+=vertical
 " Open file / tag under cursor new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-let g:JavaComplete_UsePython3=0
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM plugin manager
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,4 +135,17 @@ endif
 " Plugin settings - javacomplete2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:JavaComplete_UsePython3=0
+let g:JavaComplete_JavaviLogfileDirectory=$TMP
+let g:JavaComplete_JavaviDebug=1
+
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+"autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
+"autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
+"autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
