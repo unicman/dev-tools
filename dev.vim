@@ -14,6 +14,8 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set background=light
+
 if has('gui_running')
 	" Good font
 	set guifont=Courier\ New
@@ -74,6 +76,8 @@ set diffopt+=vertical
 " Open file / tag under cursor new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
+let g:JavaComplete_UsePython3=0
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM plugin manager
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,10 +104,13 @@ filetype plugin indent on
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd Filetype json setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd Filetype xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd Filetype xslt setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd Filetype java setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd Filetype sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd Filetype groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - NERDtree
@@ -113,7 +120,9 @@ autocmd Filetype sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandt
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tagbar tree view to show for source code
-autocmd Filetype javascript,json,html,yaml,python,java,sh TagbarToggle
+if exists(':TagbarToggle')
+    autocmd Filetype javascript,json,html,yaml,python,java,sh TagbarToggle
+endif
 
 " Nerdtree - open explorer if no files specified
 "autocmd StdinReadPre * let s:std_in=1
@@ -124,3 +133,8 @@ autocmd Filetype javascript,json,html,yaml,python,java,sh TagbarToggle
 "autocmd BufRead,BufNewFile d:/scratch/* NERDTree
 "autocmd BufRead,BufNewFile c:/to_delete/* NERDTree
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings - javacomplete2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
