@@ -89,15 +89,16 @@ echo ""
 
 for cFilePath in ${DIR_UM_GIT}/dev-tools/compiler/*.vim 
 do
-    cFileFullPath=$(basename $cFilePath)
-    cFileName=${cFileFullPath%.*}
+    cFileName=$(basename $cFilePath)
 
     if [ "$UNAME_OS" == "Msys" ] ; then
-        fnExec cmd <<< "mklink ${DIR_COMPILER}/${cFileName}.vim ${cFileFullPath}" # Create symbolic link to VIM settings
+        fnExec cmd <<< "mklink ${DIR_COMPILER}/${cFileName} ${cFilePath}" # Create symbolic link to VIM settings
     else
-        fnExec ln -sf ${cFileFullPath} ${DIR_COMPILER}/${cFileName}.vim # Create symbolic link to VIM settings
+        fnExec ln -sf ${cFilePath} ${DIR_COMPILER}/${cFileName} # Create symbolic link to VIM settings
     fi
 done
+
+exit 0
 
 STEP=`expr ${STEP} + 1`
 echo ""
