@@ -93,13 +93,11 @@ do
     cFileName=${cFileFullPath%.*}
 
     if [ "$UNAME_OS" == "Msys" ] ; then
-        fnExec cmd <<< "mklink ${DIR_COMPILER}/${cFileName} ${cFileFullPath}" # Create symbolic link to VIM settings
+        fnExec cmd <<< "mklink ${DIR_COMPILER}/${cFileName}.vim ${cFileFullPath}" # Create symbolic link to VIM settings
     else
-        fnExec ln -sf ${cFileFullPath} ${DIR_COMPILER}/${cFileName} # Create symbolic link to VIM settings
+        fnExec ln -sf ${cFileFullPath} ${DIR_COMPILER}/${cFileName}.vim # Create symbolic link to VIM settings
     fi
 done
-
-exit 0
 
 STEP=`expr ${STEP} + 1`
 echo ""
