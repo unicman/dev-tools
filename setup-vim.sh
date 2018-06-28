@@ -37,7 +37,7 @@ fnGitClone()
 DIR_UM_GIT=~/um-git
 UNAME_OS=$(uname -o)
 UNAME=$(uname)
-STEPS=6
+STEPS=7
 STEP=0
 
 if [ "${TMP}" == "" ] ; then
@@ -69,13 +69,37 @@ echo ""
 if [ "$UNAME_OS" == "Msys" ] ; then
 	DIR_AUTOLOAD=~/vimfiles/autoload
 	DIR_BUNDLE=~/vimfiles/bundle
+	DIR_COMPILER=~/vimfiles/compiler
 else
 	DIR_AUTOLOAD=~/.vim/autoload
 	DIR_BUNDLE=~/.vim/bundle
+	DIR_COMPILER=~/.vim/compiler
 fi
 
 fnExec mkdir -p ${DIR_AUTOLOAD} # Required for automatically loading pathogen
 fnExec mkdir -p ${DIR_BUNDLE} # Pathogen needs it to store all other plugins
+fnExec mkdir -p ${DIR_COMPILER} # Pathogen needs it to store all other plugins
+
+STEP=`expr ${STEP} + 1`
+echo ""
+echo "********************************************************************************"
+echo "**** Step ${STEP}/${STEPS} Configuring VIM compilers..."
+echo "********************************************************************************"
+echo ""
+
+for cFilePath in ${DIR_UM_GIT}/dev-tools/compiler/*.vim 
+do
+    cFileFullPath=$(basename $cFilePath)
+    cFileName=${cFileFullPath%.*}
+
+    if [ "$UNAME_OS" == "Msys" ] ; then
+        fnExec cmd <<< "mklink ${DIR_COMPILER}/${cFileName} ${cFileFullPath}" # Create symbolic link to VIM settings
+    else
+        fnExec ln -sf ${cFileFullPath} ${DIR_COMPILER}/${cFileName} # Create symbolic link to VIM settings
+    fi
+done
+
+exit 0
 
 STEP=`expr ${STEP} + 1`
 echo ""
