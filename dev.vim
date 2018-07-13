@@ -29,7 +29,9 @@ if has('gui_running')
 endif
 
 " Allow mouse controls
-set mouse=a
+if has('mouse')
+	set mouse=a
+endif
 
 " Avoid annoying ~ backup files
 set nobackup
@@ -145,6 +147,7 @@ autocmd FileType python let g:ale_python_pylint_options='--module-naming-style=a
 let g:JavaComplete_UsePython3=0
 let g:JavaComplete_JavaviLogfileDirectory=$TMP
 let g:JavaComplete_JavaviDebug=1
+let g:JavaComplete_ImportOrder=[ 'com', 'oracle', 'org', 'javax', 'java' ]
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
