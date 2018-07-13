@@ -26,4 +26,4 @@ execute "CompilerSet makeprg=" . s:gradlew
 "    \%-GBUILD\ SUCCESSFUL#,
 "    \%-GTotal\ \time:\ %.%#
 
-CompilerSet errorformat=%E:compileTarget%f:%l:\ %m,%-Z%p^,%E:compileJava%f:%l:\ %m,%-Z%p^,%E%f:%l:\ %m,%-Z%p^,%-C%.%#,%-G%.%#
+CompilerSet errorformat=%E:%.%#compileTarget%f:%l:\ %m,%-Z%p^,%E:%.%#compileJava%f:%l:\ %m,%-Z%p^,%E%f:%l:\ %m,%-Z%p^,%-C%.%#,%-G%.%#
