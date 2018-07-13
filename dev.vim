@@ -111,6 +111,7 @@ autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap exp
 autocmd Filetype java setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd Filetype sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd Filetype groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd Filetype vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - NERDtree
@@ -152,3 +153,7 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 "autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 "autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 "autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+"if filereadable('c:\Program Files\Git\bin\bash.exe')
+"	set shell=c:\Program\ Files\Git\bin\bash.exe
+"endif

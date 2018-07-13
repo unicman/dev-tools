@@ -92,7 +92,9 @@ do
     cFileName=$(basename $cFilePath)
 
     if [ "$UNAME_OS" == "Msys" ] ; then
-        fnExec cmd <<< "mklink ${DIR_COMPILER}/${cFileName} ${cFilePath}" # Create symbolic link to VIM settings
+        cWinLinkPath=$(cygpath -w ${DIR_COMPILER}/${cFileName})
+        cWinFilePath=$(cygpath -w ${cFilePath})
+        fnExec cmd <<< "mklink ${cWinLinkPath} ${cWinFilePath}" # Create symbolic link to VIM settings
     else
         fnExec ln -sf ${cFilePath} ${DIR_COMPILER}/${cFileName} # Create symbolic link to VIM settings
     fi
