@@ -112,6 +112,7 @@ autocmd Filetype java setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expan
 autocmd Filetype sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd Filetype groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd Filetype vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd Filetype plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - NERDtree

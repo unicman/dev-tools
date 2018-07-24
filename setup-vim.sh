@@ -124,6 +124,7 @@ fnGitClone https://github.com/majutsushi/tagbar.git ${DIR_BUNDLE}/tagbar # sourc
 fnGitClone https://github.com/tpope/vim-fugitive.git ${DIR_BUNDLE}/vim-fugitive # Git wrapper
 fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fugitive-gitlab.vim # Gitlab wrapper
 fnGitClone https://github.com/artur-shaik/vim-javacomplete2.git ${DIR_BUNDLE}/javacomplete2 # Auto-complete for Java
+fnGitClone https://github.com/aklt/plantuml-syntax.git ${DIR_BUNDLE}/plantuml-syntax # plantuml syntax support
 
 STEP=`expr ${STEP} + 1`
 echo ""
