@@ -35,7 +35,7 @@ fnGitClone()
 # Setup logic
 ########################################
 DIR_UM_GIT=~/um-git
-UNAME_OS=$(uname -o)
+UNAME_OS=$(uname -o || true)
 UNAME=$(uname)
 STEPS=7
 STEP=0
