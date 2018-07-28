@@ -35,19 +35,26 @@ fnGitClone()
 # Setup logic
 ########################################
 DIR_UM_GIT=~/um-git
-UNAME_OS=$(uname -o || true)
 UNAME=$(uname)
 STEPS=7
 STEP=0
+
+if [ "$UNAME" != "Darwin" ] ; then
+	UNAME_OS=$(uname -o)
+else
+	UNAME_OS=""
+fi
 
 if [ "${TMP}" == "" ] ; then
 	export TMP="/tmp"
 fi
 
-if [ "$UNAME" != "Linux" ] && [ "$UNAME_OS" != "Msys" ] ; then
-        echo "This script is only supported on Linux and Git Bash on Windows."
+if [ "$UNAME" != "Darwin" ] && [ "$UNAME" != "Linux" ] && [ "$UNAME_OS" != "Msys" ] ; then
+        echo "This script is only supported on Linux, Mac and Git Bash on Windows."
         exit 1
 fi
+
+fnExec git --version
 
 STEP=`expr ${STEP} + 1`
 echo ""
@@ -133,9 +140,8 @@ echo "**** Step ${STEP}/${STEPS} Install Universal ctags..."
 echo "********************************************************************************"
 echo ""
 
-if [ "$UNAME_OS" == "Msys" ] ; then
-    echo "Need to write code for windows installation of universal ctags."
-    exit 1
+if [ "$UNAME" == "Darwin" ] || [ "$UNAME_OS" == "Msys" ] ; then
+    echo "Need to write code for Mac and Windows installation of universal ctags."
 else
     fnGitClone https://github.com/universal-ctags/ctags.git ${DIR_UM_GIT}/universal-ctags # Fetch latest source
     fnExec cd ${DIR_UM_GIT}/universal-ctags
