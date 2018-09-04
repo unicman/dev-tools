@@ -143,14 +143,21 @@ autocmd FileType python let g:ale_python_pylint_options='--module-naming-style=a
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - javacomplete2
+" 
+" To see autocomplete work, press Control-X Control-O
+" To see method parameter information, press -
+"      Control-X control-O Control-X Control-U
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:JavaComplete_UsePython3=0
-let g:JavaComplete_JavaviLogfileDirectory=$TMP
-let g:JavaComplete_JavaviDebug=1
-let g:JavaComplete_ImportOrder=[ 'com', 'oracle', 'org', 'javax', 'java' ]
+autocmd FileType java let g:JavaComplete_ShowExternalCommandsOutput = 1
+autocmd FileType java let g:JavaComplete_UsePython3=0
+autocmd FileType java let g:JavaComplete_JavaviLogfileDirectory=$TMP
+autocmd FileType java let g:JavaComplete_JavaviDebug=1
+autocmd FileType java let g:JavaComplete_ImportOrder=[ 'com', 'oracle', 'org', 'javax', 'java' ]
+autocmd FileType java let g:JavaComplete_CompletionResultSort=1
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 
 "autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 "autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)

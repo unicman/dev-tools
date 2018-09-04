@@ -132,6 +132,11 @@ fnGitClone https://github.com/tpope/vim-fugitive.git ${DIR_BUNDLE}/vim-fugitive 
 fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fugitive-gitlab.vim # Gitlab wrapper
 fnGitClone https://github.com/artur-shaik/vim-javacomplete2.git ${DIR_BUNDLE}/javacomplete2 # Auto-complete for Java
 fnGitClone https://github.com/aklt/plantuml-syntax.git ${DIR_BUNDLE}/plantuml-syntax # plantuml syntax support
+#fnGitClone https://github.com/rkulla/pydiction.git ${DIR_BUNDLE}/pydiction # Auto-complete for python
+
+echo ""
+echo "**** Deleting intermediate files of javacomplete2 plugin to allow re-generation after next VIM run..."
+rm -fr ${DIR_BUNDLE}/javacomplete2/libs/javavi/target
 
 STEP=`expr ${STEP} + 1`
 echo ""
