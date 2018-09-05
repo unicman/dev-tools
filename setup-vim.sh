@@ -55,7 +55,7 @@ fnSoftLink()
 ########################################
 DIR_UM_GIT=~/um-git
 UNAME=$(uname)
-STEPS=7
+STEPS=8
 STEP=0
 
 if [ "$UNAME" != "Darwin" ] ; then
@@ -145,11 +145,22 @@ fnGitClone https://github.com/tpope/vim-fugitive.git ${DIR_BUNDLE}/vim-fugitive 
 fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fugitive-gitlab.vim # Gitlab wrapper
 fnGitClone https://github.com/artur-shaik/vim-javacomplete2.git ${DIR_BUNDLE}/javacomplete2 # Auto-complete for Java
 fnGitClone https://github.com/aklt/plantuml-syntax.git ${DIR_BUNDLE}/plantuml-syntax # plantuml syntax support
-#fnGitClone https://github.com/rkulla/pydiction.git ${DIR_BUNDLE}/pydiction # Auto-complete for python
+fnGitClone https://github.com/davidhalter/jedi-vim.git ${DIR_BUNDLE}/jedi-vim # Auto-complete for python (depends on jedi)
 
 echo ""
 echo "**** Deleting intermediate files of javacomplete2 plugin to allow re-generation after next VIM run..."
 rm -fr ${DIR_BUNDLE}/javacomplete2/libs/javavi/target
+
+STEP=`expr ${STEP} + 1`
+echo ""
+echo "********************************************************************************"
+echo "**** Step ${STEP}/${STEPS} Install Python modules..."
+echo "********************************************************************************"
+echo ""
+
+echo ""
+echo "**** Installing jedi required for jedi-vim..."
+fnExec sudo pip install jedi
 
 STEP=`expr ${STEP} + 1`
 echo ""

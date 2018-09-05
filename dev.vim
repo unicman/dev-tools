@@ -145,8 +145,6 @@ autocmd FileType python let g:ale_python_pylint_options='--module-naming-style=a
 " Plugin settings - javacomplete2
 " 
 " To see autocomplete work, press Control-X Control-O
-" To see method parameter information, press -
-"      Control-X control-O Control-X Control-U
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 autocmd FileType java let g:JavaComplete_ShowExternalCommandsOutput = 1
