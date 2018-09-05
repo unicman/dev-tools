@@ -31,6 +31,25 @@ fnGitClone()
 	fi
 }
 
+fnSoftLink()
+{
+    if [ "$UNAME_OS" == "Msys" ] ; then
+        cWinLinkPath=$(cygpath -w $2)
+        cWinFilePath=$(cygpath -w $1)
+
+        # Ensure that earlier sym link is deleted without deleting original content
+        if [ -d ${cWinLinkPath} ] ; then
+            fnExec cmd <<< "rmdir ${cWinLinkPath}" 
+        elif [ -f ${cWinLinkPath} ] ; then
+            fnExec rm ${cWinLinkPath}
+        fi
+
+        fnExec cmd <<< "mklink ${cWinLinkPath} ${cWinFilePath}" # Create symbolic link to VIM settings
+    else
+        fnExec ln -sf $1 $2 # Create symbolic link to VIM settings
+    fi
+}
+
 ########################################
 # Setup logic
 ########################################
@@ -98,13 +117,7 @@ for cFilePath in ${DIR_UM_GIT}/dev-tools/compiler/*.vim
 do
     cFileName=$(basename $cFilePath)
 
-    if [ "$UNAME_OS" == "Msys" ] ; then
-        cWinLinkPath=$(cygpath -w ${DIR_COMPILER}/${cFileName})
-        cWinFilePath=$(cygpath -w ${cFilePath})
-        fnExec cmd <<< "mklink ${cWinLinkPath} ${cWinFilePath}" # Create symbolic link to VIM settings
-    else
-        fnExec ln -sf ${cFilePath} ${DIR_COMPILER}/${cFileName} # Create symbolic link to VIM settings
-    fi
+    fnSoftLink ${cFilePath} ${DIR_COMPILER}/${cFileName} # Create symbolic link to VIM settings
 done
 
 STEP=`expr ${STEP} + 1`
@@ -167,9 +180,8 @@ echo ""
 
 fnExec cd ~ # Switch back to user home folder
 
-if [ "$UNAME_OS" == "Msys" ] ; then
-	fnExec cmd <<< "mklink _vimrc ${DIR_UM_GIT}/dev-tools/dev.vim" # Create symbolic link to VIM settings
+if [ "${UNAME_OS}" == "Msys" ] ; then
+    fnSoftLink ${DIR_UM_GIT}/dev-tools/dev.vim _vimrc # Create symbolic link to VIM settings
 else
-	fnExec ln -sf ${DIR_UM_GIT}/dev-tools/dev.vim .vimrc # Create symbolic link to VIM settings
+    fnSoftLink ${DIR_UM_GIT}/dev-tools/dev.vim .vimrc # Create symbolic link to VIM settings
 fi
-
