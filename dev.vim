@@ -141,7 +141,10 @@ let NERDTreeRespectWildIgnore=1
 " Plugin settings - ALE - Python Customization
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-autocmd FileType python let g:ale_python_pylint_options='--module-naming-style=any --const-naming-style=any --class-naming-style=any --function-naming-style=any --method-naming-style=any --attr-naming-style=any --argument-naming-style=any --variable-naming-style=any --class-attribute-naming-style=any --inlinevar-naming-style=any --disable=multiple-statements,line-too-long,superfluous-parens,trailing-whitespace,old-style-class,bare-except,missing-docstring,too-many-instance-attributes,bad-whitespace --generated-members=os'
+" Since pylint doesn't install on some Linux OS using flake8
+" autocmd FileType python let g:ale_python_pylint_options='--module-naming-style=any --const-naming-style=any --class-naming-style=any --function-naming-style=any --method-naming-style=any --attr-naming-style=any --argument-naming-style=any --variable-naming-style=any --class-attribute-naming-style=any --inlinevar-naming-style=any --disable=multiple-statements,line-too-long,superfluous-parens,trailing-whitespace,old-style-class,bare-except,missing-docstring,too-many-instance-attributes,bad-whitespace --generated-members=os'
+
+autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E203,E225,E265,E302,E305,E501,W291'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - javacomplete2
