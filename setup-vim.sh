@@ -140,6 +140,8 @@ echo ""
 
 fnGitClone https://github.com/w0rp/ale.git ${DIR_BUNDLE}/ale # Asynchronous Lint Engine
 fnGitClone https://github.com/scrooloose/nerdtree.git ${DIR_BUNDLE}/nerdtree # quick navigation
+fnGitClone https://github.com/vim-scripts/gitignore.git ${DIR_BUNDLE}/gitignore # useful to filter out files in gitignore in nerdtree
+fnGitClone https://github.com/Xuyuanp/nerdtree-git-plugin ${DIR_BUNDLE}/nerdtree-git-plugin # Git support for quick navigation
 fnGitClone https://github.com/majutsushi/tagbar.git ${DIR_BUNDLE}/tagbar # source code outline
 fnGitClone https://github.com/tpope/vim-fugitive.git ${DIR_BUNDLE}/vim-fugitive # Git wrapper
 fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fugitive-gitlab.vim # Gitlab wrapper

@@ -126,6 +126,8 @@ if exists(':TagbarToggle')
     autocmd Filetype javascript,json,html,yaml,python,java,sh TagbarToggle
 endif
 
+let NERDTreeRespectWildIgnore=1
+
 " Nerdtree - open explorer if no files specified
 "autocmd StdinReadPre * let s:std_in=1
 
