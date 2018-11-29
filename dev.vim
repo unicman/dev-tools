@@ -144,7 +144,7 @@ let NERDTreeRespectWildIgnore=1
 " Since pylint doesn't install on some Linux OS using flake8
 " autocmd FileType python let g:ale_python_pylint_options='--module-naming-style=any --const-naming-style=any --class-naming-style=any --function-naming-style=any --method-naming-style=any --attr-naming-style=any --argument-naming-style=any --variable-naming-style=any --class-attribute-naming-style=any --inlinevar-naming-style=any --disable=multiple-statements,line-too-long,superfluous-parens,trailing-whitespace,old-style-class,bare-except,missing-docstring,too-many-instance-attributes,bad-whitespace --generated-members=os'
 
-autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E128,E129,E201,E202,E203,E211,E221,E222,E225,E226,E231,E241,E251,E261,E265,E272,E302,E303,E305,E501,E701,E702,E722,W291,W293,W391'
+autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E128,E129,E201,E202,E203,E211,E221,E222,E225,E226,E231,E241,E251,E261,E265,E266,E272,E302,E303,E305,E501,E701,E702,E722,W291,W293,W391'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - Jedi-VIM python auto complete plugin
