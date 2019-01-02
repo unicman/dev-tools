@@ -181,3 +181,11 @@ autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 "if filereadable('c:\Program Files\Git\bin\bash.exe')
 "	set shell=c:\Program\ Files\Git\bin\bash.exe
 "endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings - ctrlp
+"
+" To search for files based on keywords / substrings faster.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'gradlew', '.project']

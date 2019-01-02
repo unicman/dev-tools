@@ -1,7 +1,7 @@
 " Vim Compiler File
 " Compiler: gradle
 
-let s:gradlew = escape(findfile('gradlew', '.;') . " -b " . findfile('build.gradle', '.;'), ' \')
+let s:gradlew = escape(fnamemodify(findfile('gradlew', '.;'), ':p') . " ", ' \')
 
 if exists("current_compiler")
     finish
