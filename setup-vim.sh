@@ -19,6 +19,18 @@ fnExec()
     $*
 }
 
+fnExecSudo()
+{
+    echo ""
+    echo "**** $*"
+
+    if [ "$UNAME_OS" == "Msys" ] ; then
+        $*
+    else
+        sudo $*
+    fi
+}
+
 fnGitClone()
 {
 	GIT_URL=$1
@@ -163,7 +175,8 @@ echo ""
 
 echo ""
 echo "**** Installing jedi required for jedi-vim..."
-fnExec sudo pip install jedi flake8
+
+fnExecSudo pip install jedi flake8
 
 STEP=`expr ${STEP} + 1`
 echo ""
