@@ -188,4 +188,4 @@ autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 " To search for files based on keywords / substrings faster.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'gradlew', '.project']
+let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'gradlew']
