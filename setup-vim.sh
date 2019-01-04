@@ -67,7 +67,7 @@ fnSoftLink()
 ########################################
 DIR_UM_GIT=~/um-git
 UNAME=$(uname)
-STEPS=8
+STEPS=9
 STEP=0
 
 if [ "$UNAME" != "Darwin" ] ; then
@@ -146,14 +146,30 @@ fnExec cp -f ${TMP}/vim-pathogen/autoload/pathogen.vim ${DIR_AUTOLOAD}/ # Copy p
 STEP=`expr ${STEP} + 1`
 echo ""
 echo "********************************************************************************"
+echo "**** Step ${STEP}/${STEPS} Removing unused plugins..."
+echo "********************************************************************************"
+echo ""
+
+echo ""
+echo "**** Removing nerdtree in factor of CtrlP that's much easy to use..."
+
+#fnGitClone https://github.com/vim-scripts/gitignore.git ${DIR_BUNDLE}/gitignore # useful to filter out files in gitignore in nerdtree
+fnExec rm -fr ${DIR_BUNDLE}/gitignore
+
+#fnGitClone https://github.com/scrooloose/nerdtree.git ${DIR_BUNDLE}/nerdtree # quick navigation
+fnExec rm -fr ${DIR_BUNDLE}/nerdtree 
+
+#fnGitClone https://github.com/Xuyuanp/nerdtree-git-plugin ${DIR_BUNDLE}/nerdtree-git-plugin # Git support for quick navigation (disabled)
+fnExec rm -fr ${DIR_BUNDLE}/nerdtree-git-plugin
+
+STEP=`expr ${STEP} + 1`
+echo ""
+echo "********************************************************************************"
 echo "**** Step ${STEP}/${STEPS} Installing plugins..."
 echo "********************************************************************************"
 echo ""
 
 fnGitClone https://github.com/w0rp/ale.git ${DIR_BUNDLE}/ale # Asynchronous Lint Engine
-fnGitClone https://github.com/scrooloose/nerdtree.git ${DIR_BUNDLE}/nerdtree # quick navigation
-fnGitClone https://github.com/vim-scripts/gitignore.git ${DIR_BUNDLE}/gitignore # useful to filter out files in gitignore in nerdtree
-#fnGitClone https://github.com/Xuyuanp/nerdtree-git-plugin ${DIR_BUNDLE}/nerdtree-git-plugin # Git support for quick navigation (disabled)
 fnGitClone https://github.com/majutsushi/tagbar.git ${DIR_BUNDLE}/tagbar # source code outline
 fnGitClone https://github.com/tpope/vim-fugitive.git ${DIR_BUNDLE}/vim-fugitive # Git wrapper
 fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fugitive-gitlab.vim # Gitlab wrapper
@@ -161,6 +177,7 @@ fnGitClone https://github.com/artur-shaik/vim-javacomplete2.git ${DIR_BUNDLE}/ja
 fnGitClone https://github.com/aklt/plantuml-syntax.git ${DIR_BUNDLE}/plantuml-syntax # plantuml syntax support
 fnGitClone https://github.com/davidhalter/jedi-vim.git ${DIR_BUNDLE}/jedi-vim # Auto-complete for python (depends on jedi)
 fnGitClone https://github.com/ctrlpvim/ctrlp.vim.git ${DIR_BUNDLE}/ctrlp # Fuzzy file search
+fnGitClone https://github.com/vim-airline/vim-airline.git ${DIR_BUNDLE}/vim-airline # Nice status line and tab line
 
 echo ""
 echo "**** Deleting intermediate files of javacomplete2 plugin to allow re-generation after next VIM run..."

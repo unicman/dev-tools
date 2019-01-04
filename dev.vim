@@ -91,7 +91,7 @@ execute pathogen#infect()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " fugitive
-set statusline="%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P"
+"set statusline="%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P"
 
 " fugitive-gitlab.vim
 let g:fugitive_gitlab_domains = ['https://orahub.oraclecorp.com']
@@ -115,18 +115,18 @@ autocmd Filetype vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expand
 autocmd Filetype plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin settings - NERDtree
+" Plugin settings - NERDtree (disabled in favor of ctrlp)
 "
 " NOTE: Kept at the last because otherwise all commands and settings get
 " applied to tree window instead of actual file.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tagbar tree view to show for source code
-if exists(':TagbarToggle')
-    autocmd Filetype javascript,json,html,yaml,python,java,sh TagbarToggle
-endif
+"if exists(':TagbarToggle')
+"    autocmd Filetype javascript,json,html,yaml,python,java,sh TagbarToggle
+"endif
 
-let NERDTreeRespectWildIgnore=1
+"let NERDTreeRespectWildIgnore=1
 
 " Nerdtree - open explorer if no files specified
 "autocmd StdinReadPre * let s:std_in=1
@@ -188,4 +188,14 @@ autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 " To search for files based on keywords / substrings faster.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:ctrlp_max_files=0
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'gradlew']
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings - vim-airline
+"
+" Customizations of how status and tag bar will look like.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:airline#extensions#tabline#enabled = 1
