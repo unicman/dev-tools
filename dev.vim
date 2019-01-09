@@ -63,6 +63,7 @@ set incsearch
 " Be smart when using tabs
 set	smarttab
 
+
 " Does the right thing (mostly) in programs
 set smartindent
 
@@ -70,7 +71,7 @@ set smartindent
 set autoindent
 
 " Highlight on the line your cursor is currently on.
-set cursorline
+"set cursorline
 
 " diff windows should be vertically split
 set diffopt+=vertical
@@ -150,18 +151,24 @@ autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E128
 " Plugin settings - Jedi-VIM python auto complete plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+autocmd FileType java set completeopt-=preview
 autocmd FileType python set completeopt-=preview
 hi def jediFat term=bold,underline cterm=bold,underline gui=bold,underline ctermbg=Grey guibg=#555555
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - javacomplete2
 "
-" To see autocomplete work, press Control-X Control-O
+" Usage:
+" To see autocomplete work, press Control-X  + Control-O. Control-Space might 
+" also work.
+"
+" Start typing :JC and then there are variety of commands for auto
+" complete. E.g. :JCimportAdd will add import of class under cursor.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 autocmd FileType java let g:JavaComplete_ShowExternalCommandsOutput = 1
 autocmd FileType java let g:JavaComplete_UsePython3=0
-autocmd FileType java let g:JavaComplete_JavaviLogfileDirectory=$TMP
+autocmd FileType java let g:JavaComplete_JavaviLogfileDirectory=$HOME
 autocmd FileType java let g:JavaComplete_JavaviDebug=1
 autocmd FileType java let g:JavaComplete_ImportOrder=[ 'com', 'oracle', 'org', 'javax', 'java' ]
 autocmd FileType java let g:JavaComplete_CompletionResultSort=1
@@ -169,14 +176,8 @@ autocmd FileType java let g:JavaComplete_CompletionResultSort=1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 
-"autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-"autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-"autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
-"autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
-"autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-"autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-"autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-"autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+" Key mapping for Using control space to bring up auto complete window
+autocmd FileType java imap c-space c x c o
 
 "if filereadable('c:\Program Files\Git\bin\bash.exe')
 "	set shell=c:\Program\ Files\Git\bin\bash.exe
@@ -191,6 +192,7 @@ autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'gradlew']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - vim-airline
@@ -199,3 +201,16 @@ let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'gradlew']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline#extensions#tabline#enabled = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings - vim-dispatch (Vim 8)
+"
+" Asynchronously runs build commands and can run grep or test cases too.
+"
+" Usage:
+" Use :Make! instead of standard :make
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:dispatch_handlers=[ 'headless' ]
+autocmd BufReadPost quickfix nnoremap <buffer> r :Copen<CR>
+autocmd BufReadPost quickfix nnoremap <buffer> R :Copen<CR>G
