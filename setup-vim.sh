@@ -48,6 +48,7 @@ fnSoftLink()
     if [ "$UNAME_OS" == "Msys" ] ; then
         cWinLinkPath=$(cygpath -w $2)
         cWinFilePath=$(cygpath -w $1)
+        cWinDir=$3
 
         # Ensure that earlier sym link is deleted without deleting original content
         if [ -d ${cWinLinkPath} ] ; then
@@ -56,7 +57,11 @@ fnSoftLink()
             fnExec rm ${cWinLinkPath}
         fi
 
-        fnExec cmd <<< "mklink ${cWinLinkPath} ${cWinFilePath}" # Create symbolic link to VIM settings
+        if [ "${cWinDir}" == "-folder" ] ; then
+            fnExec cmd <<< "mklink /d ${cWinLinkPath} ${cWinFilePath}" # Create symbolic link to folder
+        else
+            fnExec cmd <<< "mklink ${cWinLinkPath} ${cWinFilePath}" # Create symbolic link to file
+        fi
     else
         fnExec ln -sf $1 $2 # Create symbolic link to VIM settings
     fi
@@ -105,14 +110,12 @@ echo "**************************************************************************
 echo ""
 
 if [ "$UNAME_OS" == "Msys" ] ; then
-	DIR_AUTOLOAD=~/vimfiles/autoload
-	DIR_BUNDLE=~/vimfiles/bundle
-	DIR_COMPILER=~/vimfiles/compiler
-else
-	DIR_AUTOLOAD=~/.vim/autoload
-	DIR_BUNDLE=~/.vim/bundle
-	DIR_COMPILER=~/.vim/compiler
+    fnSoftLink ~/.vim ~/vimfiles -folder # Create symbolic link to VIM settings
 fi
+
+DIR_AUTOLOAD=~/.vim/autoload
+DIR_BUNDLE=~/.vim/bundle
+DIR_COMPILER=~/.vim/compiler
 
 fnExec mkdir -p ${DIR_AUTOLOAD} # Required for automatically loading pathogen
 fnExec mkdir -p ${DIR_BUNDLE} # Pathogen needs it to store all other plugins
@@ -231,8 +234,5 @@ echo ""
 
 fnExec cd ~ # Switch back to user home folder
 
-if [ "${UNAME_OS}" == "Msys" ] ; then
-    fnSoftLink ${DIR_UM_GIT}/dev-tools/dev.vim _vimrc # Create symbolic link to VIM settings
-else
-    fnSoftLink ${DIR_UM_GIT}/dev-tools/dev.vim .vimrc # Create symbolic link to VIM settings
-fi
+fnSoftLink ${DIR_UM_GIT}/dev-tools/dev.vim _vimrc # Create symbolic link to VIM settings
+fnSoftLink ${DIR_UM_GIT}/dev-tools/dev.vim .vimrc # Create symbolic link to VIM settings
