@@ -163,7 +163,7 @@ fnExec rm -fr ${DIR_BUNDLE}/nerdtree
 fnExec rm -fr ${DIR_BUNDLE}/nerdtree-git-plugin
 
 echo ""
-echo "**** Removing bad plugin vim dispatch that doesn't work..."
+echo "**** Removing bad plugin asyncrun ... vim dispatch is better..."
 
 #fnGitClone https://github.com/skywind3000/asyncrun.vim.git ${DIR_BUNDLE}/asyncrun # Allows make and other commands to be run without blocking VIM
 fnExec rm -fr ${DIR_BUNDLE}/asyncrun
@@ -184,6 +184,7 @@ fnGitClone https://github.com/aklt/plantuml-syntax.git ${DIR_BUNDLE}/plantuml-sy
 fnGitClone https://github.com/davidhalter/jedi-vim.git ${DIR_BUNDLE}/jedi-vim # Auto-complete for python (depends on jedi)
 fnGitClone https://github.com/ctrlpvim/ctrlp.vim.git ${DIR_BUNDLE}/ctrlp # Fuzzy file search
 fnGitClone https://github.com/vim-airline/vim-airline.git ${DIR_BUNDLE}/vim-airline # Nice status line and tab line
+fnGitClone https://github.com/vim-airline/vim-airline-themes.git ${DIR_BUNDLE}/vim-airline-themes # Nice themes for status line and tab lines
 fnGitClone https://github.com/tpope/vim-dispatch.git ${DIR_BUNDLE}/vim-dispatch # Asynchronous make or grep commands in Vim 8
 
 echo ""
