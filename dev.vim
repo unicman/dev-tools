@@ -201,7 +201,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline#extensions#tabline#enabled = 1
-let g:arline_theme='sol'
+let g:airline_theme='light'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - vim-dispatch (Vim 8)
