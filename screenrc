@@ -12,6 +12,7 @@ defscrollback 10000
 # mousetrack on
 
 term screen-256color
+truecolor on
 
 # start with visual bell as default
 vbell on

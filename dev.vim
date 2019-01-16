@@ -16,6 +16,8 @@
 
 set background=light
 
+set termguicolors
+
 if has('gui_running')
 	" Good font
 	set guifont=Courier\ New
@@ -189,6 +191,10 @@ autocmd FileType java imap c-space c x c o
 " To search for files based on keywords / substrings faster.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
 let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'gradlew']
