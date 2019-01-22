@@ -11,7 +11,7 @@ defscrollback 10000
 # source: https://superuser.com/questions/629004/gnu-screen-change-focus-in-split-windows-with-mouse
 # mousetrack on
 
-term screen-256color
+term xterm-256color
 truecolor on
 
 # start with visual bell as default

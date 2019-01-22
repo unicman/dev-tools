@@ -16,7 +16,8 @@
 
 set background=light
 
-set termguicolors
+" Doesn't work fully as of 17 Jan 2019
+"set termguicolors
 
 if has('gui_running')
 	" Good font
@@ -71,9 +72,6 @@ set smartindent
 
 " Turns on auto-indentation
 set autoindent
-
-" Highlight on the line your cursor is currently on.
-"set cursorline
 
 " diff windows should be vertically split
 set diffopt+=vertical
@@ -207,7 +205,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='light'
+let g:airline_theme='dark'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - vim-dispatch (Vim 8)
@@ -221,3 +219,11 @@ let g:airline_theme='light'
 let g:dispatch_handlers=[ 'headless' ]
 autocmd BufReadPost quickfix nnoremap <buffer> r :Copen<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> R :Copen<CR>G
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Highlight on the line your cursor is currently on. This must be done
+" after all formatting is done hence kept at the last.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=cyan ctermfg=white
