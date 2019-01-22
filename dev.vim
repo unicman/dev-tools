@@ -142,8 +142,17 @@ autocmd Filetype plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap e
 " Plugin settings - ALE - Python Customization
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Show errors and warnings in quick fix window
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+
 " Since pylint doesn't install on some Linux OS using flake8
 " autocmd FileType python let g:ale_python_pylint_options='--module-naming-style=any --const-naming-style=any --class-naming-style=any --function-naming-style=any --method-naming-style=any --attr-naming-style=any --argument-naming-style=any --variable-naming-style=any --class-attribute-naming-style=any --inlinevar-naming-style=any --disable=multiple-statements,line-too-long,superfluous-parens,trailing-whitespace,old-style-class,bare-except,missing-docstring,too-many-instance-attributes,bad-whitespace --generated-members=os'
+
+" Disable trailing blank line and whitespace warnings
+let g:ale_warn_about_trailing_blank_lines = 0
+let g:ale_warn_about_trailing_whitespace = 0
 
 autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E128,E129,E201,E202,E203,E211,E221,E222,E225,E226,E231,E241,E251,E261,E265,E266,E272,E302,E303,E305,E501,E701,E702,E722,W291,W293,W391'
 
@@ -184,6 +193,12 @@ autocmd FileType java imap c-space c x c o
 "endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Setup java compiler
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd FileType java compiler gradle
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - ctrlp
 "
 " To search for files based on keywords / substrings faster.
@@ -206,6 +221,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
+let g:airline#extensions#whitespace#enabled=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - vim-dispatch (Vim 8)
@@ -226,4 +242,6 @@ autocmd BufReadPost quickfix nnoremap <buffer> R :Copen<CR>G
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=cyan ctermfg=white
+"set cursorcolumn
+hi CursorLine   cterm=NONE ctermbg=cyan ctermfg=black guifg=black guibg=cyan
+"hi Cursor       cterm=NONE ctermbg=gray ctermfg=black guifg=black guibg=gray

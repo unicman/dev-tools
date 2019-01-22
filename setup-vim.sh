@@ -33,14 +33,14 @@ fnExecSudo()
 
 fnGitClone()
 {
-	GIT_URL=$1
-	DIR_PLUGIN=$2
-	if [ -d ${DIR_PLUGIN} ] ; then
-		fnExec cd ${DIR_PLUGIN}
-		fnExec git pull
-	else
-		fnExec git clone ${GIT_URL} ${DIR_PLUGIN}
-	fi
+    GIT_URL=$1
+    DIR_PLUGIN=$2
+    if [ -d ${DIR_PLUGIN} ] ; then
+        fnExec cd ${DIR_PLUGIN}
+        fnExec git pull
+    else
+        fnExec git clone ${GIT_URL} ${DIR_PLUGIN}
+    fi
 }
 
 fnSoftLink()
@@ -76,18 +76,18 @@ STEPS=9
 STEP=0
 
 if [ "$UNAME" != "Darwin" ] ; then
-	UNAME_OS=$(uname -o)
+    UNAME_OS=$(uname -o)
 else
-	UNAME_OS=""
+    UNAME_OS=""
 fi
 
 if [ "${TMP}" == "" ] ; then
-	export TMP="/tmp"
+    export TMP="/tmp"
 fi
 
 if [ "$UNAME" != "Darwin" ] && [ "$UNAME" != "Linux" ] && [ "$UNAME_OS" != "Msys" ] ; then
-        echo "This script is only supported on Linux, Mac and Git Bash on Windows."
-        exit 1
+    echo "This script is only supported on Linux, Mac and Git Bash on Windows."
+    exit 1
 fi
 
 fnExec git --version
