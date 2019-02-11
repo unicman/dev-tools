@@ -66,7 +66,6 @@ set incsearch
 " Be smart when using tabs
 set	smarttab
 
-
 " Does the right thing (mostly) in programs
 set smartindent
 
@@ -76,8 +75,14 @@ set autoindent
 " diff windows should be vertically split
 set diffopt+=vertical
 
+" diff should ignore whitespaces
+set diffopt+=iwhite
+
 " Open file / tag under cursor new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Keyboard short cut for closing all tabs and ccome out of VIM
+"map <C-w>q <ESC>:qa<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM plugin manager
@@ -154,7 +159,7 @@ let g:ale_open_list = 1
 let g:ale_warn_about_trailing_blank_lines = 0
 let g:ale_warn_about_trailing_whitespace = 0
 
-autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E128,E129,E201,E202,E203,E211,E221,E222,E225,E226,E231,E241,E251,E261,E265,E266,E272,E302,E303,E305,E501,E701,E702,E722,W291,W293,W391'
+autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E127,E128,E129,E201,E202,E203,E211,E221,E222,E225,E226,E231,E241,E251,E261,E265,E266,E272,E302,E303,E305,E501,E701,E702,E722,W291,W293,W391'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - Jedi-VIM python auto complete plugin
