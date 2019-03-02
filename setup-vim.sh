@@ -39,7 +39,7 @@ fnGitClone()
         fnExec cd ${DIR_PLUGIN}
         fnExec git pull
     else
-        fnExec git clone ${GIT_URL} ${DIR_PLUGIN}
+        fnExec git clone -c "user.name=${UM_USER}" -c "user.email=${UM_EMAIL}" ${GIT_URL} ${DIR_PLUGIN}
     fi
 }
 
@@ -74,6 +74,11 @@ DIR_UM_GIT=~/um-git
 UNAME=$(uname)
 STEPS=9
 STEP=0
+
+if [ "${UM_USER}" == "" ] ; then
+    export UM_USER=unicman
+    export UM_EMAIL=unicman@gmail.com
+fi
 
 if [ "$UNAME" != "Darwin" ] ; then
     UNAME_OS=$(uname -o)
