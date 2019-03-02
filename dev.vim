@@ -165,6 +165,12 @@ autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E127
 " Plugin settings - Jedi-VIM python auto complete plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Bug in Jedi opens too many windows on auto complete so workaround as per
+" https://github.com/davidhalter/jedi-vim/issues/870
+if has("win32")
+    py import os; sys.executable=os.path.join(sys.prefix, 'python.exe')
+endif
+
 autocmd FileType java set completeopt-=preview
 autocmd FileType python set completeopt-=preview
 hi def jediFat term=bold,underline cterm=bold,underline gui=bold,underline ctermbg=Grey guibg=#555555
