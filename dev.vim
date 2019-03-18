@@ -21,7 +21,7 @@ set background=light
 
 if has('gui_running')
 	" Good font
-	set guifont=Courier\ New
+	set guifont=Consolas,Monaco,Courier\ New
 
 	" Sufficient size window
 	set lines=1000
