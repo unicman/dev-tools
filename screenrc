@@ -14,6 +14,9 @@ defscrollback 10000
 term xterm-256color
 truecolor on
 
+# For agent forwarding to work https://gist.github.com/martijnvermaat/8070533
+setenv SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
+
 # start with visual bell as default
 vbell on
 vbell_msg "bell on %t (%n)"
