@@ -107,18 +107,18 @@ let g:fugitive_gitlab_domains = ['https://orahub.oraclecorp.com']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
 
-autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
-autocmd Filetype json setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
-autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
-autocmd Filetype xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
-autocmd Filetype xslt setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
-autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
-autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
-autocmd Filetype java setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
-autocmd Filetype sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
-autocmd Filetype groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
-autocmd Filetype vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
-autocmd Filetype plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType xslt setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - NERDtree (disabled in favor of ctrlp)
@@ -129,7 +129,7 @@ autocmd Filetype plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap e
 
 " Tagbar tree view to show for source code
 "if exists(':TagbarToggle')
-"    autocmd Filetype javascript,json,html,yaml,python,java,sh TagbarToggle
+"    autocmd FileType javascript,json,html,yaml,python,java,sh TagbarToggle
 "endif
 
 "let NERDTreeRespectWildIgnore=1
@@ -137,7 +137,7 @@ autocmd Filetype plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap e
 " Nerdtree - open explorer if no files specified
 "autocmd StdinReadPre * let s:std_in=1
 
-"autocmd Filetype javascript,json,html,yaml,python,java,sh if argc() != 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd FileType javascript,json,html,yaml,python,java,sh if argc() != 0 && !exists("s:std_in") | NERDTree | endif
 
 "autocmd BufRead,BufNewFile d:/dev/* NERDTree
 "autocmd BufRead,BufNewFile d:/scratch/* NERDTree
@@ -233,6 +233,12 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
 let g:airline#extensions#whitespace#enabled=0
+
+" Activate tagbar extension only for certain filetypes
+let g:airline#extensions#tagbar#enabled = 0
+autocmd FileType vim let g:airline#extensions#tagbar#enabled = 1
+autocmd FileType java let g:airline#extensions#tagbar#enabled = 1
+autocmd FileType python let g:airline#extensions#tagbar#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - vim-dispatch (Vim 8)
