@@ -1,0 +1,8 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\Folder\shell\VIMF]
+@="Edit all with VIM"
+
+[HKEY_CLASSES_ROOT\Folder\shell\VIMF\command]
+@="c:\\Program Files\\vim\\vim81\\gvim.exe \"%L\""
+
