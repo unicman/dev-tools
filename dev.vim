@@ -81,7 +81,7 @@ set diffopt+=iwhite
 " Open file / tag under cursor new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Keyboard short cut for closing all tabs and ccome out of VIM
+" Keyboard short cut for closing all tabs and come out of VIM
 "map <C-w>q <ESC>:qa<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -111,6 +111,7 @@ autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd FileType xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType tf setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd FileType xslt setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
@@ -149,7 +150,7 @@ autocmd FileType plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap e
 
 " Show errors and warnings in quick fix window
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_quickfix = 0
 let g:ale_open_list = 1
 
 " Since pylint doesn't install on some Linux OS using flake8
@@ -179,7 +180,7 @@ hi def jediFat term=bold,underline cterm=bold,underline gui=bold,underline cterm
 " Plugin settings - javacomplete2
 "
 " Usage:
-" To see autocomplete work, press Control-X  + Control-O. Control-Space might 
+" To see autocomplete work, press Control-X  + Control-O. Control-Space might
 " also work.
 "
 " Start typing :JC and then there are variety of commands for auto
