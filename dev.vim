@@ -103,6 +103,26 @@ execute pathogen#infect()
 let g:fugitive_gitlab_domains = ['https://orahub.oraclecorp.com']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Detect custom filetypes based on file contents
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! UMDetectCustomFiletype()
+    let umline1 = getline(1)
+
+    if ! has('filetype')
+        if umline1 =~ "apiVersion:"
+            setfiletype yaml
+        elseif umline1 =~ "[DEFAULT]"
+            setfiletype dosini
+        endif
+    endif
+endfunction
+
+augroup filetypedetect
+    au BufRead,BufNewFile * call UMDetectCustomFiletype()
+augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
