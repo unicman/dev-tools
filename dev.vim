@@ -142,29 +142,6 @@ autocmd FileType vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expand
 autocmd FileType plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin settings - NERDtree (disabled in favor of ctrlp)
-"
-" NOTE: Kept at the last because otherwise all commands and settings get
-" applied to tree window instead of actual file.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Tagbar tree view to show for source code
-"if exists(':TagbarToggle')
-"    autocmd FileType javascript,json,html,yaml,python,java,sh TagbarToggle
-"endif
-
-"let NERDTreeRespectWildIgnore=1
-
-" Nerdtree - open explorer if no files specified
-"autocmd StdinReadPre * let s:std_in=1
-
-"autocmd FileType javascript,json,html,yaml,python,java,sh if argc() != 0 && !exists("s:std_in") | NERDTree | endif
-
-"autocmd BufRead,BufNewFile d:/dev/* NERDTree
-"autocmd BufRead,BufNewFile d:/scratch/* NERDTree
-"autocmd BufRead,BufNewFile c:/to_delete/* NERDTree
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - ALE - Python Customization
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -205,24 +182,26 @@ hi def jediFat term=bold,underline cterm=bold,underline gui=bold,underline cterm
 "
 " Start typing :JC and then there are variety of commands for auto
 " complete. E.g. :JCimportAdd will add import of class under cursor.
+"
+" NOTE: This plugin was really slow so removed it.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-autocmd FileType java let g:JavaComplete_ShowExternalCommandsOutput = 1
-autocmd FileType java let g:JavaComplete_UsePython3=0
-autocmd FileType java let g:JavaComplete_JavaviLogfileDirectory=$HOME
-autocmd FileType java let g:JavaComplete_JavaviDebug=1
-autocmd FileType java let g:JavaComplete_ImportOrder=[ 'com', 'oracle', 'org', 'javax', 'java' ]
-autocmd FileType java let g:JavaComplete_CompletionResultSort=1
-
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
-
-" Key mapping for Using control space to bring up auto complete window
-autocmd FileType java imap c-space c x c o
-
-"if filereadable('c:\Program Files\Git\bin\bash.exe')
-"	set shell=c:\Program\ Files\Git\bin\bash.exe
-"endif
+"autocmd FileType java let g:JavaComplete_ShowExternalCommandsOutput = 1
+"autocmd FileType java let g:JavaComplete_UsePython3=0
+"autocmd FileType java let g:JavaComplete_JavaviLogfileDirectory=$HOME
+"autocmd FileType java let g:JavaComplete_JavaviDebug=1
+"autocmd FileType java let g:JavaComplete_ImportOrder=[ 'com', 'oracle', 'org', 'javax', 'java' ]
+"autocmd FileType java let g:JavaComplete_CompletionResultSort=1
+"
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
+"
+"" Key mapping for Using control space to bring up auto complete window
+"autocmd FileType java imap c-space c x c o
+"
+""if filereadable('c:\Program Files\Git\bin\bash.exe')
+""	set shell=c:\Program\ Files\Git\bin\bash.exe
+""endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Setup java compiler

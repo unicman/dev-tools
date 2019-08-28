@@ -170,6 +170,12 @@ fnExec rm -fr ${DIR_BUNDLE}/nerdtree
 #fnGitClone https://github.com/Xuyuanp/nerdtree-git-plugin ${DIR_BUNDLE}/nerdtree-git-plugin # Git support for quick navigation (disabled)
 fnExec rm -fr ${DIR_BUNDLE}/nerdtree-git-plugin
 
+#fnGitClone https://github.com/artur-shaik/vim-javacomplete2.git ${DIR_BUNDLE}/javacomplete2 # Auto-complete for Java
+#echo ""
+#echo "**** Deleting intermediate files of javacomplete2 plugin to allow re-generation after next VIM run..."
+#rm -fr ${DIR_BUNDLE}/javacomplete2/libs/javavi/target
+fnExec rm -fr ${DIR_BUNDLE}/javacomplete2
+
 echo ""
 echo "**** Removing bad plugin asyncrun ... vim dispatch is better..."
 
@@ -187,17 +193,12 @@ fnGitClone https://github.com/w0rp/ale.git ${DIR_BUNDLE}/ale # Asynchronous Lint
 fnGitClone https://github.com/majutsushi/tagbar.git ${DIR_BUNDLE}/tagbar # source code outline
 fnGitClone https://github.com/tpope/vim-fugitive.git ${DIR_BUNDLE}/vim-fugitive # Git wrapper
 fnGitClone https://github.com/shumphrey/fugitive-gitlab.vim.git ${DIR_BUNDLE}/fugitive-gitlab.vim # Gitlab wrapper
-fnGitClone https://github.com/artur-shaik/vim-javacomplete2.git ${DIR_BUNDLE}/javacomplete2 # Auto-complete for Java
 fnGitClone https://github.com/aklt/plantuml-syntax.git ${DIR_BUNDLE}/plantuml-syntax # plantuml syntax support
 fnGitClone https://github.com/davidhalter/jedi-vim.git ${DIR_BUNDLE}/jedi-vim # Auto-complete for python (depends on jedi)
 fnGitClone https://github.com/ctrlpvim/ctrlp.vim.git ${DIR_BUNDLE}/ctrlp # Fuzzy file search
 fnGitClone https://github.com/vim-airline/vim-airline.git ${DIR_BUNDLE}/vim-airline # Nice status line and tab line
 fnGitClone https://github.com/vim-airline/vim-airline-themes.git ${DIR_BUNDLE}/vim-airline-themes # Nice themes for status line and tab lines
 fnGitClone https://github.com/tpope/vim-dispatch.git ${DIR_BUNDLE}/vim-dispatch # Asynchronous make or grep commands in Vim 8
-
-echo ""
-echo "**** Deleting intermediate files of javacomplete2 plugin to allow re-generation after next VIM run..."
-rm -fr ${DIR_BUNDLE}/javacomplete2/libs/javavi/target
 
 STEP=`expr ${STEP} + 1`
 echo ""
