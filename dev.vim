@@ -36,6 +36,9 @@ if has('mouse')
 	set mouse=a
 endif
 
+" Ensure that yank 'y' uses clipboard by default
+set clipboard=unnamed
+
 " Avoid annoying ~ backup files
 set nobackup
 
