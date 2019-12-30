@@ -169,7 +169,7 @@ autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E127
 " Bug in Jedi opens too many windows on auto complete so workaround as per
 " https://github.com/davidhalter/jedi-vim/issues/870
 if has("win32")
-    py import os; sys.executable=os.path.join(sys.prefix, 'python.exe')
+    py3 import os; sys.executable=os.path.join(sys.prefix, 'python3.exe')
 endif
 
 autocmd FileType java set completeopt-=preview
@@ -190,7 +190,7 @@ hi def jediFat term=bold,underline cterm=bold,underline gui=bold,underline cterm
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "autocmd FileType java let g:JavaComplete_ShowExternalCommandsOutput = 1
-"autocmd FileType java let g:JavaComplete_UsePython3=0
+"autocmd FileType java let g:JavaComplete_UsePython3=1
 "autocmd FileType java let g:JavaComplete_JavaviLogfileDirectory=$HOME
 "autocmd FileType java let g:JavaComplete_JavaviDebug=1
 "autocmd FileType java let g:JavaComplete_ImportOrder=[ 'com', 'oracle', 'org', 'javax', 'java' ]
