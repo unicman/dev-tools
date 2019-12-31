@@ -52,7 +52,7 @@ fnSoftLink()
 
         # Ensure that earlier sym link is deleted without deleting original content
         if [ -d ${cWinLinkPath} ] ; then
-            fnExec cmd <<< "rmdir ${cWinLinkPath}" 
+            fnExec cmd <<< "rmdir ${cWinLinkPath}"
         elif [ -f ${cWinLinkPath} ] ; then
             fnExec rm ${cWinLinkPath}
         fi
@@ -133,7 +133,7 @@ echo "**** Step ${STEP}/${STEPS} Configuring VIM compilers..."
 echo "********************************************************************************"
 echo ""
 
-for cFilePath in ${DIR_UM_GIT}/dev-tools/compiler/*.vim 
+for cFilePath in ${DIR_UM_GIT}/dev-tools/compiler/*.vim
 do
     cFileName=$(basename $cFilePath)
 
@@ -165,7 +165,7 @@ echo "**** Removing nerdtree in factor of CtrlP that's much easy to use..."
 fnExec rm -fr ${DIR_BUNDLE}/gitignore
 
 #fnGitClone https://github.com/scrooloose/nerdtree.git ${DIR_BUNDLE}/nerdtree # quick navigation
-fnExec rm -fr ${DIR_BUNDLE}/nerdtree 
+fnExec rm -fr ${DIR_BUNDLE}/nerdtree
 
 #fnGitClone https://github.com/Xuyuanp/nerdtree-git-plugin ${DIR_BUNDLE}/nerdtree-git-plugin # Git support for quick navigation (disabled)
 fnExec rm -fr ${DIR_BUNDLE}/nerdtree-git-plugin
@@ -210,7 +210,7 @@ echo ""
 echo ""
 echo "**** Installing jedi required for jedi-vim..."
 
-fnExecSudo pip install jedi flake8
+fnExecSudo pip3 install jedi flake8
 
 STEP=`expr ${STEP} + 1`
 echo ""
