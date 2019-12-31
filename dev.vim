@@ -160,7 +160,7 @@ let g:ale_open_list = 1
 let g:ale_warn_about_trailing_blank_lines = 0
 let g:ale_warn_about_trailing_whitespace = 0
 
-autocmd FileType python let g:ale_python_flake8_options='--ignore E123,E126,E127,E128,E129,E201,E202,E203,E211,E221,E222,E225,E226,E231,E241,E251,E261,E265,E266,E272,E302,E303,E305,E501,E701,E702,E722,W291,W293,W391'
+autocmd FileType python let g:ale_python_flake8_options='--ignore E121,E123,E126,E127,E128,E129,E201,E202,E203,E211,E221,E222,E225,E226,E231,E241,E251,E261,E265,E266,E272,E302,E303,E305,E501,E701,E702,E722,W291,W293,W391'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - Jedi-VIM python auto complete plugin
