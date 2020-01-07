@@ -39,7 +39,7 @@ fnGitClone()
         fnExec cd ${DIR_PLUGIN}
         fnExec git pull
     else
-        fnExec git clone -c "user.name=${UM_USER}" -c "user.email=${UM_EMAIL}" ${GIT_URL} ${DIR_PLUGIN}
+        fnExec git clone -c "core.autocrlf=input" -c "user.name=${UM_USER}" -c "user.email=${UM_EMAIL}" ${GIT_URL} ${DIR_PLUGIN}
     fi
 }
 
