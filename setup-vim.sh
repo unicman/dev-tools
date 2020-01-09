@@ -210,7 +210,7 @@ echo ""
 echo ""
 echo "**** Installing jedi required for jedi-vim..."
 
-fnExecSudo pip3 install jedi flake8
+fnExecSudo pip3 install -r ${DIR_UM_GIT}/dev-tools/requirements.txt
 
 STEP=`expr ${STEP} + 1`
 echo ""
