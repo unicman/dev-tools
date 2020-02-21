@@ -17,3 +17,5 @@ _book
 *.swp
 /setup-vim.sh.new
 /.project
+.DS_Store
+com.apple.metadata*
