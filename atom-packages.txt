@@ -1,0 +1,11 @@
+################################################################################
+# File: atom-packages.txt
+#
+# Description: Installs good plugins for Atom Editor
+#
+# Date (M/D/Y)         Name            Description
+# 02/27/2020           unicman         Created
+################################################################################
+
+language-markdown
+markdown-writer
