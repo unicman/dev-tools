@@ -29,6 +29,12 @@ if has('gui_running')
 
 	" Spelling check
 	set spell
+
+    " diff windows should be vertically split
+    set diffopt+=vertical
+
+    " diff should ignore whitespaces
+    set diffopt+=iwhite
 endif
 
 " Allow mouse controls
@@ -74,12 +80,6 @@ set smartindent
 
 " Turns on auto-indentation
 set autoindent
-
-" diff windows should be vertically split
-set diffopt+=vertical
-
-" diff should ignore whitespaces
-set diffopt+=iwhite
 
 " Open file / tag under cursor new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
