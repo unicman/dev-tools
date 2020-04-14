@@ -1,0 +1,17 @@
+# Mac Files
+.DS_Store
+com.apple.metadata*
+
+# vi
+*~
+
+# editor
+*.bak
+
+# debug files
+log/
+logs/
+*.log
+
+# Lock files e.g. ruby gem etc
+*.lock
