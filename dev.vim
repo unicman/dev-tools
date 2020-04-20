@@ -14,7 +14,9 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set background=light
+set background=dark
+
+colorscheme evening
 
 " Doesn't work fully as of 17 Jan 2019
 "set termguicolors
@@ -24,8 +26,8 @@ if has('gui_running')
 	set guifont=Consolas,Monaco,Courier\ New
 
 	" Sufficient size window
-	set lines=1000
-	set columns=150
+	set lines=80
+	set columns=200
 
 	" Spelling check
 	set spell
@@ -261,7 +263,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> R :Copen<CR>G
 " after all formatting is done hence kept at the last.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set cursorline
+#set cursorline
 "set cursorcolumn
 hi CursorLine   cterm=NONE ctermbg=cyan ctermfg=black guifg=black guibg=cyan
 "hi Cursor       cterm=NONE ctermbg=gray ctermfg=black guifg=black guibg=gray
