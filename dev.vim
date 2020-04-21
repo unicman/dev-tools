@@ -23,7 +23,7 @@ colorscheme evening
 
 if has('gui_running')
 	" Good font
-	set guifont=Consolas,Monaco,Courier\ New
+	set guifont=JetBrains\ Mono,Consolas,Monaco,Courier\ New
 
 	" Sufficient size window
 	set lines=80
@@ -263,7 +263,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> R :Copen<CR>G
 " after all formatting is done hence kept at the last.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-#set cursorline
+"set cursorline
 "set cursorcolumn
 hi CursorLine   cterm=NONE ctermbg=cyan ctermfg=black guifg=black guibg=cyan
 "hi Cursor       cterm=NONE ctermbg=gray ctermfg=black guifg=black guibg=gray
