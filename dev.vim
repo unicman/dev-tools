@@ -14,9 +14,13 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set background=dark
+set background=light
 
-colorscheme evening
+if &background == "light"
+    colorscheme morning
+else
+    colorscheme desert
+endif
 
 " Doesn't work fully as of 17 Jan 2019
 "set termguicolors
