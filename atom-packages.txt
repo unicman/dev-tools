@@ -9,4 +9,6 @@
 
 language-markdown
 markdown-writer
+platformio-ide-terminal
 vagrant
+
