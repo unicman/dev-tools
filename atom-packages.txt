@@ -7,8 +7,12 @@
 # 02/27/2020           unicman         Created
 ################################################################################
 
+atom-beautify # To format various types of files well
 language-markdown
 markdown-writer
 platformio-ide-terminal
 vagrant
 
+# Atom plugins to make editor behave similar to VI
+vim-mode-plus
+ex-mode
