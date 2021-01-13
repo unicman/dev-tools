@@ -8,10 +8,10 @@
 ################################################################################
 
 atom-beautify # To format various types of files well
+file-icons # To show file type based packages
 language-markdown
 markdown-writer
 platformio-ide-terminal
-vagrant
 
 # Atom plugins to make editor behave similar to VI
 vim-mode-plus
