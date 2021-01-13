@@ -17,7 +17,7 @@
 set background=light
 
 if &background == "light"
-    colorscheme morning
+    colorscheme default
 else
     colorscheme desert
 endif
@@ -30,8 +30,8 @@ if has('gui_running')
 	set guifont=JetBrains\ Mono,Consolas,Monaco,Courier\ New
 
 	" Sufficient size window
-	set lines=80
-	set columns=200
+	set lines=40
+	set columns=100
 
 	" Spelling check
 	set spell
