@@ -5,20 +5,7 @@
 # 06/29/2020           unicman         Created
 ################################################################################
 
-function fnDockerCleanAll() {
-    #_DOCKER_CONTAINER_LIST=$(docker ps -a -q -f status=exited)
-    #if [ "${_DOCKER_CONTAINER_LIST}" != "" ] ; then
-    #    echo "Deleting exited containers..."
-    #    docker rm -v ${_DOCKER_CONTAINER_LIST}
-    #fi
-
-    #_DOCKER_IMAGE_LIST=$(docker images -f "dangling=true" -q)
-
-    #if [ "${_DOCKER_IMAGE_LIST}" != "" ] ; then
-    #    echo "Deleting untagged images..."
-    #    docker rmi ${_DOCKER_IMAGE_LIST}
-    #fi
-
+function __fnDockerCleanAll() {
     docker system prune
     docker images prune
 
@@ -36,6 +23,41 @@ function fnDockerCleanAll() {
     docker system df
 }
 
-alias tools.docker-clean-all='fnDockerCleanAll'
+function __fnDockerCleanImages() {
+    docker images | while read line ; do
+        _D_IMAGE=$(echo "${line}" | awk '{ print $1 }')
+        _D_TAG=$(echo "${line}" | awk '{ print $2 }')
+        _D_ID=$(echo "${line}" | awk '{ print $3 }')
+        read -p "Delete ${_D_IMAGE}:${_D_TAG} (y/n)?" _DEL_D < /dev/tty
 
-alias tools.reload-ssh='echo "Removing PKCS cached SSH key..." && ssh-add -e /usr/local/lib/opensc-pkcs11.so && echo "Adding PKCS SSH key..." && ssh-add -s /usr/local/lib/opensc-pkcs11.so'
+        if [[ "${_DEL_D}" =~ ^[yY].*$ ]] ; then
+            docker rmi ${_D_ID}
+        fi
+    done
+}
+
+alias docker.clean-all='__fnDockerCleanAll'
+
+alias docker.clean-images='__fnDockerCleanImages'
+
+alias ssh.reload-key='echo "Removing PKCS cached SSH key..." && ssh-add -e /usr/local/lib/opensc-pkcs11.so && echo "Adding PKCS SSH key..." && ssh-add -s /usr/local/lib/opensc-pkcs11.so'
+
+function __fnTerraformFilterGraph() {
+    if [ "$1" == "" ] || [ "$2" == "" ] ; then
+        echo "Usage: <alias> <path_of_terraform_graph_output> <regex>"
+        return
+    fi
+    cat <<EOF | dot -Tsvg > $1.svg
+digraph {
+	compound = "true"
+	newrank = "true"
+	graph [splines=ortho, nodesep=1]
+	subgraph "root" {
+$(grep "$2" $1)
+    }
+}
+EOF
+    echo "$1.svg contains filtered graph."
+}
+
+alias terraform.filter-graph='__fnTerraformFilterGraph'
