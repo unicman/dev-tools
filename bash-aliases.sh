@@ -38,6 +38,8 @@ function __fnDockerCleanImages() {
 
 alias docker.clean-all='__fnDockerCleanAll'
 
+alias docker.clean-safe='docker rm $(docker ps -qa); docker rmi -f $(docker images -f "dangling=true" -q);'
+
 alias docker.clean-images='__fnDockerCleanImages'
 
 alias ssh.reload-key='echo "Removing PKCS cached SSH key..." && ssh-add -e /usr/local/lib/opensc-pkcs11.so && echo "Adding PKCS SSH key..." && ssh-add -s /usr/local/lib/opensc-pkcs11.so'
