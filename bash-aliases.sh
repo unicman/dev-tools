@@ -75,3 +75,8 @@ alias pmset.sleep-when-roaming='sudo pmset -a lidwake 1 -a '
 alias pmset.sleep-all-off='sudo pmset -a lidwake 0 && sudo pmset -a displaysleep 0'
 
 alias cpu-temperature='sudo powermetrics --samplers smc |grep -i "CPU die temperature"'
+
+if ansible --version > /dev/null 2>&1 ; then
+    source $(dirname $BASH_SOURCE)/ansible-aliases.sh
+fi
+
