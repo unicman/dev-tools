@@ -27,11 +27,11 @@ endif
 
 if has('gui_running')
 	" Good font
-	set guifont=JetBrains\ Mono,Consolas,Monaco,Courier\ New
+	set guifont=Source\ Code\ Pro\ Medium\ for\ Powerline,JetBrains\ Mono,Consolas,Monaco,Courier\ New:h20
 
 	" Sufficient size window
 	set lines=40
-	set columns=100
+	set columns=150
 
 	" Spelling check
 	set spell
@@ -108,8 +108,19 @@ execute pathogen#infect()
 " fugitive
 "set statusline="%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P"
 
-" fugitive-gitlab.vim
-let g:fugitive_gitlab_domains = ['https://orahub.oraclecorp.com']
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tree-view file explorer on left side.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+let g:netrw_keepdir = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+autocmd VimEnter * :Vexplore
+autocmd VimEnter * if (argc() > 0 && filereadable(argv()[0])) | wincmd l | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Detect custom filetypes based on file contents
