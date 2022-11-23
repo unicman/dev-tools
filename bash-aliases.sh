@@ -80,3 +80,6 @@ if ansible --version > /dev/null 2>&1 ; then
     source $(dirname $BASH_SOURCE)/ansible-aliases.sh
 fi
 
+# Aliases for setting permissions
+
+alias chown.local='sudo chown -R $(whoami) /usr/local/bin /usr/local/lib && chmod u+w /usr/local/bin /usr/local/lib'
