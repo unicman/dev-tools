@@ -17,7 +17,7 @@
 set background=light
 
 if &background == "light"
-    colorscheme default
+    colorscheme shine
 else
     colorscheme desert
 endif
@@ -160,6 +160,8 @@ autocmd FileType sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandt
 autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd FileType vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd FileType plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType Dockerfile setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType yaml.docker-compose setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - ALE - Python Customization
@@ -251,7 +253,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='dark'
+let g:airline_theme='papercolor'
 let g:airline#extensions#whitespace#enabled=0
 
 " Activate tagbar extension only for certain filetypes
