@@ -161,7 +161,8 @@ autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap exp
 autocmd FileType vim setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd FileType plantuml setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
 autocmd FileType Dockerfile setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
-autocmd FileType yaml.docker-compose setlocal tabstop=4 shiftwidth=4 softtabstop=4 nowrap expandtab
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType yaml.docker-compose setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings - ALE - Python Customization
