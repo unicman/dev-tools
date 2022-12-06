@@ -31,6 +31,18 @@ fnExecSudo()
     fi
 }
 
+fnFindFileUpward()
+{
+    path="$1"
+    shift 1
+    while [[ $path != / ]];
+    do
+        find "$path" -maxdepth 1 -mindepth 1 "$@"        
+        path="$(realpath -s "$path"/..)"
+    done
+    # vi --version | grep -oh "/[^ ]\+python[^ ]*"
+}
+
 fnGitClone()
 {
     GIT_URL=$1
@@ -199,6 +211,11 @@ fnGitClone https://github.com/ctrlpvim/ctrlp.vim.git ${DIR_BUNDLE}/ctrlp # Fuzzy
 fnGitClone https://github.com/vim-airline/vim-airline.git ${DIR_BUNDLE}/vim-airline # Nice status line and tab line
 fnGitClone https://github.com/vim-airline/vim-airline-themes.git ${DIR_BUNDLE}/vim-airline-themes # Nice themes for status line and tab lines
 fnGitClone https://github.com/tpope/vim-dispatch.git ${DIR_BUNDLE}/vim-dispatch # Asynchronous make or grep commands in Vim 8
+fnGitClone https://github.com/bfontaine/Brewfile.vim.git ${DIR_BUNDLE}/brewfile # Brewfile syntax
+fnGitClone https://github.com/hashivim/vim-terraform.git ${DIR_BUNDLE}/vim-terraform # Terraform file syntax and commands
+fnGitClone https://github.com/elzr/vim-json.git ${DIR_BUNDLE}/vim-json # JSON syntax
+fnGitClone https://github.com/ekalinin/Dockerfile.vim.git ${DIR_BUNDLE}/dockerfile # Dockerfile and docker-compose syntax and commands
+
 
 STEP=`expr ${STEP} + 1`
 echo ""
