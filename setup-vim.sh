@@ -215,6 +215,7 @@ fnGitClone https://github.com/bfontaine/Brewfile.vim.git ${DIR_BUNDLE}/brewfile 
 fnGitClone https://github.com/hashivim/vim-terraform.git ${DIR_BUNDLE}/vim-terraform # Terraform file syntax and commands
 fnGitClone https://github.com/elzr/vim-json.git ${DIR_BUNDLE}/vim-json # JSON syntax
 fnGitClone https://github.com/ekalinin/Dockerfile.vim.git ${DIR_BUNDLE}/dockerfile # Dockerfile and docker-compose syntax and commands
+fnGitClone https://github.com/Glench/Vim-Jinja2-Syntax.git ${DIR_BUNDLE}/vim-jinja2-syntax # Jinja2 template syntax
 
 
 STEP=`expr ${STEP} + 1`
