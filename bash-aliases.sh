@@ -1,3 +1,4 @@
+#!/bin/bash
 ################################################################################
 # File: bash-aliases.sh
 #
@@ -71,8 +72,8 @@ alias terraform.filter-graph='__fnTerraformFilterGraph'
 alias pmset.list='pmset -g'
 
 
-alias pmset.sleep-when-roaming='sudo pmset -a lidwake 1 -a '
-alias pmset.sleep-all-off='sudo pmset -a lidwake 0 && sudo pmset -a displaysleep 0'
+alias pmset.set.laptop-working='sudo pmset -a lidwake 1 '
+alias pmset.set.docked='sudo pmset -a lidwake 0 && sudo pmset -a displaysleep 0'
 
 alias cpu-temperature='sudo powermetrics --samplers smc |grep -i "CPU die temperature"'
 
@@ -83,3 +84,24 @@ fi
 # Aliases for setting permissions
 
 alias chown.local='sudo chown -R $(whoami) /usr/local/bin /usr/local/lib && chmod u+w /usr/local/bin /usr/local/lib'
+
+# Git short-cuts
+
+function fnGitRenameBranch() {
+    TO_B=$2
+    FROM_B=$(git branch --show-current)
+
+    git branch -m ${TO_B} && git push origin -u ${TO_B} && git push origin --delete ${FROM_B}
+}
+
+alias git.branch.rename='fnGitRenameBranch'
+
+function fnGitResetBranch() {
+    TO_C=$1
+    FROM_B=$(git branch --show-current)
+
+    git reset --hard ${TO_C} && git push -f origin ${FROM_B}
+}
+
+alias git.branch.reset='fnGitRenameBranch'
+
