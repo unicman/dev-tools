@@ -148,7 +148,7 @@ augroup END
 filetype plugin indent on
 
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
-autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
+autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab nospell
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd FileType xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab
 autocmd FileType tf setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab

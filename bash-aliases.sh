@@ -72,8 +72,9 @@ alias terraform.filter-graph='__fnTerraformFilterGraph'
 alias pmset.list='pmset -g'
 
 
-alias pmset.set.laptop-working='sudo pmset -a lidwake 1 '
-alias pmset.set.docked='sudo pmset -a lidwake 0 && sudo pmset -a displaysleep 0'
+alias pmset.set.laptop-working='sudo pmset -a lidwake 1 && sudo pmset -b sleep 15 displaysleep 5 powernap 0'
+alias pmset.set.docked='sudo pmset -a lidwake 0 displaysleep 300 acwake 1'
+alias pmset.set.presentation='sudo pmset -a lidwake 0 displaysleep 0 sleep 0 acwake 0'
 
 alias cpu-temperature='sudo powermetrics --samplers smc |grep -i "CPU die temperature"'
 
