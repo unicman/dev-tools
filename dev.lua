@@ -24,6 +24,7 @@ vim.cmd.colorscheme('shine')
 vim.opt.number=true
 vim.opt.smartindent=true
 vim.opt.autoindent=true
+vim.opt.cursorline=true
 
 --------------------------------------------------------------------------------
 -- File type based customisations.
@@ -33,7 +34,7 @@ autocmd('FileType', {
     pattern = { 
         'javascript', 'json', 'html', 
         'xml', 'xslt', 
-        'tf', 
+        'tf', 'terraform', 
         'yaml', 'yaml.docker-compose'
     },
     command = [[setlocal tabstop=2 shiftwidth=2 softtabstop=2 nowrap expandtab]]
@@ -132,13 +133,39 @@ cmp.setup.cmdline(':', {
     })
 })
 
--- -- Set up lspconfig.
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig')['clangd'].setup {
---     capabilities = capabilities
--- }
+-- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+require('lspconfig')['clangd'].setup {
+    capabilities = capabilities
+}
 
+require'lspconfig'.pylsp.setup{}
+
+require'lspconfig'.terraformls.setup{}
+vim.api.nvim_create_autocmd({'BufWritePre'}, {
+    pattern={"*.tf", "*.tfvars"},
+    callback=vim.lsp.buf.format
+})
+
+--------------------------------------------------------------------------------
+-- Package Manager - Bootstrap packer
+-- 
+-- Ref: https://github.com/wbthomason/packer.nvim
+--------------------------------------------------------------------------------
+
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
 
 --------------------------------------------------------------------------------
 -- Package Manager - Plugins
@@ -195,5 +222,20 @@ return require('packer').startup(function(use)
             })
         }
     }
+
+    -- Git / Bitbucket support
+    use {
+        'tpope/vim-fugitive',
+        requires = {
+            'mhinz/vim-signify',    -- Highlight Git changes
+            'tpope/vim-rhubarb',    -- GBrowse support for GitHub
+        }
+    }
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)
 
