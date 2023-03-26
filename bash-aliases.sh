@@ -2,8 +2,6 @@
 ################################################################################
 # File: bash-aliases.sh
 #
-# There is a speling mistake.
-# 
 # Date (M/D/Y)         Name            Description
 # 06/29/2020           unicman         Created
 ################################################################################
@@ -81,7 +79,7 @@ alias pmset.set.presentation='sudo pmset -a lidwake 0 displaysleep 0 sleep 0 acw
 alias cpu-temperature='sudo powermetrics --samplers smc |grep -i "CPU die temperature"'
 
 if ansible --version > /dev/null 2>&1 ; then
-    source $(dirname $BASH_SOURCE)/ansible-aliases.sh
+    source $(dirname $(realpath $BASH_SOURCE))/ansible-aliases.sh
 fi
 
 # Aliases for setting permissions
