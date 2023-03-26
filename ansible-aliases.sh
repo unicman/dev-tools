@@ -1,5 +1,3 @@
-echo "SUCCESS: Loading Ansible aliases..."
-
 export ANSIBLE_INVENTORY=~/.ansible/inventory/
 
 fnSshAnsibleConfigAutocomplete() {
@@ -22,3 +20,4 @@ fnSshAnsibleConfigAutocomplete() {
 
 complete -F fnSshAnsibleConfigAutocomplete ssh
 
+echo "SUCCESS: Ansible aliases loaded."
