@@ -189,7 +189,8 @@ return require('packer').startup(function(use)
             'hrsh7th/vim-vsnip',
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
-        }
+        },
+        run = 'pip3 install --upgrade neovim python-lsp-server',
     }
     
     -- Improves Vim's spell checking function, ZL to see correct options
@@ -230,6 +231,12 @@ return require('packer').startup(function(use)
             'mhinz/vim-signify',    -- Highlight Git changes
             'tpope/vim-rhubarb',    -- GBrowse support for GitHub
         }
+    }
+
+    -- Change working directory intelligently
+    use {
+        'notjedi/nvim-rooter.lua',
+        config = function() require'nvim-rooter'.setup() end
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
