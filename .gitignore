@@ -19,3 +19,4 @@ _book
 /.project
 .DS_Store
 com.apple.metadata*
+Brewfile.lock.json
