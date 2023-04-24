@@ -16,6 +16,5 @@ cask "postman" # Cool REST API Client
                 # command to be used - sudo pmset -b sleep 0; sudo pmset -b disablesleep 1
 cask "adobe-acrobat-reader" # For annotating and filling up PDF forms.
 cask "brave-browser"
-cask "atom"
 cask "github"
 cask "maczip" # To preview Zip archives instead of Mac OS default behavior to extract.
