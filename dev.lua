@@ -190,7 +190,7 @@ return require('packer').startup(function(use)
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
         },
-        run = 'pip3 install --upgrade neovim python-lsp-server',
+        run = 'pip3 install --upgrade neovim python-lsp-server && brew install hashicorp/tap/terraform-ls',
     }
     
     -- Improves Vim's spell checking function, ZL to see correct options
@@ -223,6 +223,9 @@ return require('packer').startup(function(use)
             })
         }
     }
+
+    -- Docker and docker-compose support
+    use 'ekalinin/Dockerfile.vim'
 
     -- Git / Bitbucket support
     use {
