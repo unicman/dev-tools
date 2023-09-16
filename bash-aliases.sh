@@ -6,6 +6,8 @@
 # 06/29/2020           unicman         Created
 ################################################################################
 
+export CLICOLOR=1 # Ensures ls etc commands show colors
+
 function __fnDockerCleanAll() {
     docker system prune
     docker images prune
