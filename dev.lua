@@ -10,6 +10,23 @@
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
+-- Package managed @ https://github.com/folke/lazy.nvim replacement for packer.
+--------------------------------------------------------------------------------
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+--------------------------------------------------------------------------------
 -- Short-cut variables
 --------------------------------------------------------------------------------
 
@@ -20,7 +37,7 @@ local highlight = vim.api.nvim_set_hl       -- Create highlight
 -- Built-in and global configuration affects all files
 --------------------------------------------------------------------------------
 
-vim.cmd.colorscheme('shine')
+vim.cmd.colorscheme('evening')
 vim.opt.number=true
 vim.opt.smartindent=true
 vim.opt.autoindent=true
@@ -68,10 +85,89 @@ highlight(0, 'SpelunkerSpellBad', {undercurl=true, underline=false})
 highlight(0, 'SpelunkerComplexOrCompoundWord', {undercurl=true, underline=false})
 
 --------------------------------------------------------------------------------
+-- Package Manager - Plugins
+--------------------------------------------------------------------------------
+
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+
+require("lazy").setup({
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/vim-vsnip',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+        },
+        init = function()
+		os.execute('pip3 install --upgrade neovim python-lsp-server && brew install hashicorp/tap/terraform-ls')
+	end,
+    },
+
+    -- Improves Vim's spell checking function, ZL to see correct options
+    {
+        'kamykn/spelunker.vim',
+        dependencies = 'kamykn/popup-menu.nvim',    -- Popup menu for spell checker
+        config = function()
+            vim.g.enable_spelunker_vim=1
+            vim.g.spelunker_disable_uri_checking=1
+            vim.g.spelunker_disable_account_name_checking=1
+            vim.g.spelunker_disable_acronym_checking=1
+            vim.g.spelunker_disable_backquoted_checking=1
+            -- [[vim.highlight.create('SpelunkerSpellBad', {gui=undercurl, guifg=#9e9e9e}, false)]],
+            -- [[vim.highlight.create('SpelunkerComplexOrCompoundWord', {gui=undercurl, guifg=#9e9e9e}, false)]],
+            vim.opt.spell=false -- Disable default spell check
+        end,
+   },
+
+    -- Tag line
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+        init = function()
+		os.execute('cd ~/Library/Fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf')
+	end,
+        config = function()
+            require('lualine').setup({
+                options = {
+                    icons_enabled = true,
+                    theme = 'gruvbox',
+                }
+            })
+        end,
+    },
+
+    -- Docker and docker-compose support
+    'ekalinin/Dockerfile.vim',
+
+    -- Git / Bitbucket support
+    {
+        'tpope/vim-fugitive',
+        dependencies = {
+            'mhinz/vim-signify',    -- Highlight Git changes
+            'tpope/vim-rhubarb',    -- GBrowse support for GitHub
+        }
+    },
+
+    -- Change working directory intelligently
+    {
+        'notjedi/nvim-rooter.lua',
+        config = function() require'nvim-rooter'.setup() end
+    },
+})
+
+
+--------------------------------------------------------------------------------
 -- hrsh7th/nvim-cmp: puto-completion configuration.
 --------------------------------------------------------------------------------
 
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 cmp.setup({
     snippet = {
@@ -147,105 +243,4 @@ vim.api.nvim_create_autocmd({'BufWritePre'}, {
     pattern={"*.tf", "*.tfvars"},
     callback=vim.lsp.buf.format
 })
-
---------------------------------------------------------------------------------
--- Package Manager - Bootstrap packer
--- 
--- Ref: https://github.com/wbthomason/packer.nvim
---------------------------------------------------------------------------------
-
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
---------------------------------------------------------------------------------
--- Package Manager - Plugins
---------------------------------------------------------------------------------
-
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-
-    -- Auto-completion
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            'neovim/nvim-lspconfig',
-            'hrsh7th/cmp-nvim-lua',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-        },
-        run = 'pip3 install --upgrade neovim python-lsp-server && brew install hashicorp/tap/terraform-ls',
-    }
-    
-    -- Improves Vim's spell checking function, ZL to see correct options
-    use {
-        'kamykn/spelunker.vim',
-        requires = 'kamykn/popup-menu.nvim',    -- Popup menu for spell checker
-        config = function()
-            vim.g.enable_spelunker_vim=1
-            vim.g.spelunker_disable_uri_checking=1
-            vim.g.spelunker_disable_account_name_checking=1
-            vim.g.spelunker_disable_acronym_checking=1
-            vim.g.spelunker_disable_backquoted_checking=1
-            -- [[vim.highlight.create('SpelunkerSpellBad', {gui=undercurl, guifg=#9e9e9e}, false)]],
-            -- [[vim.highlight.create('SpelunkerComplexOrCompoundWord', {gui=undercurl, guifg=#9e9e9e}, false)]],
-            vim.opt.spell=false -- Disable default spell check
-        end
-   }
-
-    -- Tag line
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        run = 'cd ~/Library/Fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf',
-        config = {
-            require('lualine').setup({
-                options = {
-                    icons_enabled = true,
-                    theme = 'gruvbox',
-                }
-            })
-        }
-    }
-
-    -- Docker and docker-compose support
-    use 'ekalinin/Dockerfile.vim'
-
-    -- Git / Bitbucket support
-    use {
-        'tpope/vim-fugitive',
-        requires = {
-            'mhinz/vim-signify',    -- Highlight Git changes
-            'tpope/vim-rhubarb',    -- GBrowse support for GitHub
-        }
-    }
-
-    -- Change working directory intelligently
-    use {
-        'notjedi/nvim-rooter.lua',
-        config = function() require'nvim-rooter'.setup() end
-    }
-
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-end)
 
