@@ -1,0 +1,4 @@
+#!/bin/bash -l
+# Dummy file for publishing all the aliases and environment variables
+# Through bash script before.
+exec -l fish "$@"
