@@ -91,6 +91,21 @@ highlight(0, 'SpelunkerComplexOrCompoundWord', {undercurl=true, underline=false}
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
+    -- Switches scheme w.r.t. system color scheme
+    {
+        "f-person/auto-dark-mode.nvim",
+        config = {
+            update_interval = 1000,
+            set_dark_mode = function()
+                vim.api.nvim_set_option("background", "dark")
+                vim.cmd("colorscheme evening")
+            end,
+            set_light_mode = function()
+                vim.api.nvim_set_option("background", "light")
+                vim.cmd("colorscheme shine")
+            end,
+        }
+    },
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
