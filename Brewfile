@@ -12,7 +12,8 @@ brew "tree" # Provides tree representation of folder structure in terminal windo
 cask "rectangle" # Provides keyboard shortcuts for moving windows in Mac
 cask "postman" # Cool REST API Client
 
-cask "caffeine" # Avoids laptop to go to sleep when lid is closed. Instead
+# DOES NOT WORK IN Ventura
+# cask "caffeine" # Avoids laptop to go to sleep when lid is closed. Instead
                 # command to be used - sudo pmset -b sleep 0; sudo pmset -b disablesleep 1
 cask "adobe-acrobat-reader" # For annotating and filling up PDF forms.
 cask "brave-browser"
