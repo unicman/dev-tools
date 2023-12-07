@@ -1,4 +1,5 @@
 #!/bin/bash -l
 # Dummy file for publishing all the aliases and environment variables
 # Through bash script before.
+PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 exec -l fish "$@"
