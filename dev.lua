@@ -161,6 +161,9 @@ require("lazy").setup({
     -- Docker and docker-compose support
     'ekalinin/Dockerfile.vim',
 
+    -- Fish shell syntax highlighting
+    'nickeb96/fish.vim',
+
     -- Git / Bitbucket support
     {
         'tpope/vim-fugitive',
