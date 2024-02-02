@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+docker system prune
+docker images prune
+
+_DOCKER_VOLUME_LIST=$(docker volume ls -q)
+
+if [ "${_DOCKER_VOLUME_LIST}" != "" ] ; then
+    docker volume ls
+    read -p "Delete all volumes too (y/n)?" _DEL_VOL
+
+    if [[ "${_DEL_VOL}" =~ ^[yY].*$ ]] ; then
+        docker volume rm ${_DOCKER_VOLUME_LIST}
+    fi
+fi
+
+docker system df

@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+if [ ! -f /usr/local/lib/opensc-pkcs11.so ] ; then
+  echo "Copying PKCS SO to /usr/local/lib/..."
+  sudo mkdir -p /usr/local/lib
+  if [ -f /Library/OpenSC/lib/opensc-pkcs11.so ] ; then
+    sudo cp /Library/OpenSC/lib/opensc-pkcs11.so /usr/local/lib/
+  elif [ -f /usr/lib64/opensc-pkcs11.so ] ; then
+    sudo cp /usr/lib64/opensc-pkcs11.so /usr/local/lib/
+  elif [ -f /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so ] ; then
+    sudo cp /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so /usr/local/lib/
+  fi
+else
+  echo "Removing PKCS cached SSH key..."
+  ssh-add -e /usr/local/lib/opensc-pkcs11.so || true
+fi
+
+echo "Adding PKCS SSH key..."
+ssh-add -s /usr/local/lib/opensc-pkcs11.so

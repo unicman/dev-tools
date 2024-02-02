@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+docker images | while read line ; do
+    _D_IMAGE=$(echo "${line}" | awk '{ print $1 }')
+    _D_TAG=$(echo "${line}" | awk '{ print $2 }')
+    _D_ID=$(echo "${line}" | awk '{ print $3 }')
+    read -p "Delete ${_D_IMAGE}:${_D_TAG} (y/n)?" _DEL_D < /dev/tty
+
+    if [[ "${_DEL_D}" =~ ^[yY].*$ ]] ; then
+        docker rmi ${_D_ID}
+    fi
+done

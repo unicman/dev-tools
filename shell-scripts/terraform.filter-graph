@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+if [ "$1" == "" ] || [ "$2" == "" ] ; then
+    echo "Usage: <alias> <path_of_terraform_graph_output> <regex>"
+    exit 1
+fi
+cat <<EOF | dot -Tsvg > $1.svg
+aph {
+    compound = "true"
+    newrank = "true"
+    graph [splines=ortho, nodesep=1]
+    subgraph "root" {
+ep "$2" $1)
+}
+EOF
+echo "$1.svg contains filtered graph."
+

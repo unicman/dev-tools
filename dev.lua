@@ -62,6 +62,7 @@ autocmd('FileType', {
         'vim', 'lua', 
         'python', 
         'sh', 'bash', 
+        'fish',
         'groovy', 
         'plantuml', 
         'Dockerfile'
@@ -73,9 +74,10 @@ autocmd('FileType', {
 -- nvim-lualine/lualine.nvim: Font settings
 --
 -- NOTE: In VimR change VimR -> Settings -> Appearance -> Default Font
+-- Execute set guifont or set guifont=* to know exact font name that works.
 --------------------------------------------------------------------------------
 
-vim.opt.guifont='DroidSansMono Nerd Font'
+vim.opt.guifont='JetBrainsMono_NFM_Regular:h12'
 
 --------------------------------------------------------------------------------
 -- kamykn/spelunker.vim: Spelling check settings

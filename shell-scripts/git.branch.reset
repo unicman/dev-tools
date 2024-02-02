@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+
+TO_C=$1
+FROM_B=$(git branch --show-current)
+
+git reset --hard ${TO_C} && git push -f origin ${FROM_B}

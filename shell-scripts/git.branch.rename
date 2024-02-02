@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+TO_B=$1
+FROM_B=$(git branch --show-current)
+
+git branch -m ${TO_B} && git push origin -u ${TO_B} && git push origin --delete ${FROM_B}
+
