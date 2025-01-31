@@ -37,7 +37,7 @@ local highlight = vim.api.nvim_set_hl       -- Create highlight
 -- Built-in and global configuration affects all files
 --------------------------------------------------------------------------------
 
-vim.cmd.colorscheme('evening')
+vim.cmd.colorscheme('default')
 vim.opt.number=true
 vim.opt.smartindent=true
 vim.opt.autoindent=true
@@ -50,7 +50,6 @@ vim.opt.cursorline=true
 autocmd('FileType', {
     pattern = { 
         'javascript', 'json', 'html', 
-        'xml', 'xslt', 
         'tf', 'terraform', 
         'yaml', 'yaml.docker-compose'
     },
@@ -60,6 +59,7 @@ autocmd('FileType', {
 autocmd('FileType', {
     pattern = { 
         'vim', 'lua', 
+        'xml', 'xslt', 
         'python', 
         'sh', 'bash', 
         'fish',
