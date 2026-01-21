@@ -3,5 +3,13 @@
 TO_B=$1
 FROM_B=$(git branch --show-current)
 
+if [ "${TO_B}" == "" ] || [ "${FROM_B}" == "" ] ; then
+  echo "Usage: git.branch.rename <new-branch-name>"
+  echo "Where,"
+  echo "- Execute this CLI inside checked out git repo."
+  echo "- Current branch in the local checked out repo will be renamed to new-branch-name."
+  exit 1
+fi
+
 git branch -m ${TO_B} && git push origin -u ${TO_B} && git push origin --delete ${FROM_B}
 

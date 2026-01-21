@@ -1,7 +1,14 @@
 #!/bin/bash -e
 
-
 TO_C=$1
 FROM_B=$(git branch --show-current)
+
+if [ "${TO_C}" == "" ] || [ "${FROM_B}" == "" ] ; then
+  echo "Usage: git.branch.reset <commit-uuid>"
+  echo "Where,"
+  echo "- Execute this CLI inside checked out git repo."
+  echo "- Current branch will be reset to commit-uuid."
+  exit 1
+fi
 
 git reset --hard ${TO_C} && git push -f origin ${FROM_B}
