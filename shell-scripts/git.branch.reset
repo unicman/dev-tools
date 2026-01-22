@@ -11,4 +11,4 @@ if [ "${TO_C}" == "" ] || [ "${FROM_B}" == "" ] ; then
   exit 1
 fi
 
-git reset --hard ${TO_C} && git push -f origin ${FROM_B}
+git reset --hard ${TO_C} && git push -f origin ${FROM_B} --force
