@@ -20,6 +20,9 @@ cask "brave-browser"
 cask "github"
 cask "maczip" # To preview Zip archives instead of Mac OS default behavior to extract.
 
+brew "jenkins"
+cask "catlight"  # System tray for Jenkins Jobs
+
 # Load all brewfiles under ~/.config/brewfile.d
 Dir.glob("#{Dir.home()}/.config/brewfile.d/*") do |brewfile|
     eval(IO.read(File.symlink?(brewfile) ? File.readlink(brewfile) : brewfile), binding)
