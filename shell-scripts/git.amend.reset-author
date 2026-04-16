@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+FROM_C="$1"
+
+if [ "${FROM_C}" == "" ] ; then
+  echo "Usage: git.amend.reset-author <from-commit-uuid>"
+  echo "Where,"
+  echo "- Execute this CLI inside checked out git repo."
+  echo "- Author detailsshall be updated w.r.t. git config user.name/email."
+  echo "- All commits after <from-commit-uuid> will be corrected."
+  exit 1
+fi
+
+git rebase -r $FROM_C \
+  --exec 'git commit --amend --no-edit --reset-author'
+ 
