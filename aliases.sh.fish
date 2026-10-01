@@ -40,4 +40,4 @@ alias cpu-temperature='sudo powermetrics --samplers smc |grep -i "CPU die temper
 alias chown.local='sudo chown -R $(whoami) /usr/local/bin /usr/local/lib && chmod u+w /usr/local/bin /usr/local/lib'
 
 # Jenkins short-cuts
-alias jenkins.port-change.58080='cp -f $(brew --prefix jenkins)/homebrew.mxcl.jenkins.plist $(brew --prefix jenkins)/homebrew.mxcl.jenkins.plist.org && sed -i "" -e "s/--httpPort=/--httpPort=5/g" $(brew --prefix jenkins)/homebrew.mxcl.jenkins.plist'
+alias jenkins.port-change.58080='cp -f $(brew --prefix jenkins)/sh.brew.jenkins.plist $(brew --prefix jenkins)/sh.brew.jenkins.plist.org && sed -i "" -e "s/--httpPort=/--httpPort=5/g" $(brew --prefix jenkins)/sh.brew.jenkins.plist && brew services start jenkins --file="$(brew --prefix jenkins)/sh.brew.jenkins.plist"'
