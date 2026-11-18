@@ -17,14 +17,14 @@ if test -e ./aliases.sh.fish
 end
 
 # Load terraform vesion if specified for current folder
-if test -e ./.terraform-version
+if status is-interactive; and test -e ./.terraform-version
     if command -q tfenv
         tfenv use
     end
 end
 
 # Load vesions of java tools if specified for current folder
-if test -e ./.sdkmanrc
+if status is-interactive; and test -e ./.sdkmanrc
     if command -q sdk
         sdk env use
     end
